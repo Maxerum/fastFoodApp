@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Dim4es.PayPage.PayMainActivity">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_for_pay_page" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Ваш заказ будет ждать вас по адресу:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
