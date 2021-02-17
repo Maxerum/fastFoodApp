@@ -71,6 +71,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="410dp"
         android:layout_height="186dp"
         android:layout_marginBottom="144dp"
@@ -94,9 +95,9 @@
             android:textSize="22sp" />
 
         <Button
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@color/purple_500"
             android:text="< Карточка пользователя >"
             android:textSize="18sp" />
@@ -107,9 +108,22 @@
             android:layout_marginTop="16dp"
             android:background="@color/purple_500"
             android:text="Добавить карточку для оплаты"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Отправить в печь"
+        android:textSize="22sp"
+        android:background="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.711" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
