@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">fastFoodApp</string>
+
+    <string name="menu">Menu</string>
+    <string name="account">Account</string>
+    <string name="fab_description">Go to cart</string>
 </resources>

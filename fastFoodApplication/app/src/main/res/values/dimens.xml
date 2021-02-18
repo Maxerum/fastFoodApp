@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="fab_elevation">4dp</dimen>
+    <dimen name="fab_layout_margin">12dp</dimen>
+    <dimen name="app_bar_layout_elevation">8dp</dimen>
+    <dimen name="medium_text_size">16sp</dimen>
+    <dimen name="tab_min_width">500dp</dimen>
+
+</resources>

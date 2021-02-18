@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="fastfoodapp_red">#F65058</color>
+    <color name="fastfoodapp_blue">#28334A</color>
+    <color name="fastfoodapp_yellow">#FBDE44</color>
+    <color name="fastfoodapp_light_gray">#ECEDF1</color>
 </resources>
