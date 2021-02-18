@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/purple_500"
+            android:background="@color/appBlueColor"
             android:text="< Карточка пользователя >"
             android:textSize="18sp" />
 
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/purple_500"
+            android:background="@color/appRedColor"
             android:text="Добавить карточку для оплаты"
             android:textSize="18sp" />
 
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:text="Отправить в печь"
         android:textSize="22sp"
-        android:background="@color/red"
+        android:background="@color/appBlueColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
