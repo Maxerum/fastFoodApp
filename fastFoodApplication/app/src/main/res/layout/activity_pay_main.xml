@@ -95,6 +95,7 @@
             android:textSize="22sp" />
 
         <Button
+            android:id="@+id/userCreditCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -103,6 +104,7 @@
             android:textSize="18sp" />
 
         <Button
+            android:id="@+id/addUserCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -114,6 +116,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/finalSendButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Отправить в печь"
