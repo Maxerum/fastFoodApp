@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.fastfoodapp.Dim4es.CreditCard.AddFormatCreditCard;
 import com.example.fastfoodapp.R;
 public class PayMainActivity extends AppCompatActivity {
-    ImageView arrowBack;
+    ImageView arrowBackPayPage;
     TextView textViewToChooseSpinner;
     Spinner spinnerRestaurant;
 
@@ -41,7 +41,7 @@ public class PayMainActivity extends AppCompatActivity {
 
 
         //define arrow in toolbar
-        arrowBack = findViewById(R.id.arrowBack);
+        arrowBackPayPage = findViewById(R.id.arrowBackPayPage);
 
         //INfo about "Choose restaurant"
         textViewToChooseSpinner = findViewById(R.id.textViewToChooseSpinner);
@@ -68,7 +68,7 @@ public class PayMainActivity extends AppCompatActivity {
 
 
         //arrow back on toolbar event listener
-        arrowBack.setOnClickListener(new View.OnClickListener() {
+        arrowBackPayPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Arrow back to return to previous page

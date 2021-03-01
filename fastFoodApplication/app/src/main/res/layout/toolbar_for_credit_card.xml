@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/arrowBack"
+            android:id="@+id/arrowBackCreditCard"
             android:layout_centerVertical="true"
             android:src="@drawable/icon_arrow_back_24"
             />
