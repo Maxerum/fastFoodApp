@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Dim4es.CreditCard.AddFormatCreditCard">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_for_credit_card" />
 
 
 
