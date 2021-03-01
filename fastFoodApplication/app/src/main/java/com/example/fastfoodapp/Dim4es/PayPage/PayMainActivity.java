@@ -3,6 +3,7 @@ package com.example.fastfoodapp.Dim4es.PayPage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fastfoodapp.Dim4es.CreditCard.AddFormatCreditCard;
 import com.example.fastfoodapp.R;
 public class PayMainActivity extends AppCompatActivity {
     ImageView arrowBack;
@@ -94,9 +96,11 @@ public class PayMainActivity extends AppCompatActivity {
         addUserCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(PayMainActivity.this, "Add user credit Card button clicked", Toast.LENGTH_SHORT);
+                /*Toast toast = Toast.makeText(PayMainActivity.this, "Add user credit Card button clicked", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.LEFT | Gravity.TOP, 20, 30);
-                toast.show();
+                toast.show();*/
+                Intent intent = new Intent(PayMainActivity.this, AddFormatCreditCard.class);
+                startActivity(intent);
             }
         });
 
