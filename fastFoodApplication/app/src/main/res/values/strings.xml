@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">fastFoodApp</string>
+    <string name="pay">PAY</string>
+    <string name="cancel">CANCEL</string>
 </resources>
