@@ -25,6 +25,8 @@ public class MenuViewModel {
 
     private ArrayList<String> menuCategories;
 
+    private ShoppingCartNavigator mNavigator;
+
     public MenuViewModel(Context context) {
         mContext = context;
 
@@ -65,6 +67,16 @@ public class MenuViewModel {
             TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPager,
                     ((tab, position) -> tab.setText(categories.get(position))));
             mediator.attach();
+        }
+    }
+
+    public void setShoppingCartNavigator(ShoppingCartNavigator navigator) {
+        mNavigator = navigator;
+    }
+
+    public void openOrderPayingActivity() {
+        if (mNavigator != null) {
+            mNavigator.openOrderPayingActivity();
         }
     }
 }

@@ -56,7 +56,8 @@
             android:elevation="@dimen/fab_elevation"
             android:src="@drawable/ic_shopping_cart"
             app:tint="@android:color/white"
-            android:contentDescription="@string/fab_description" />
+            android:contentDescription="@string/fab_description"
+            android:onClick="@{() -> viewModel.openOrderPayingActivity()}"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

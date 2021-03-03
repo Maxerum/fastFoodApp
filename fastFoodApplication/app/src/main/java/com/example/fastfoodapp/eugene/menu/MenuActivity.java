@@ -1,15 +1,17 @@
 package com.example.fastfoodapp.eugene.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements ShoppingCartNavigator {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class MenuActivity extends AppCompatActivity {
         MenuFragment fragment = findOrCreateFragment();
 
         MenuViewModel viewModel = findOrCreateViewModel();
+        viewModel.setShoppingCartNavigator(this);
         fragment.setViewModel(viewModel);
 
     }
@@ -50,5 +53,11 @@ public class MenuActivity extends AppCompatActivity {
 
             return viewModel;
         }
+    }
+
+    @Override
+    public void openOrderPayingActivity() {
+        Intent intent = new Intent(this, OrderPayingActivity.class);
+        startActivity(intent);
     }
 }

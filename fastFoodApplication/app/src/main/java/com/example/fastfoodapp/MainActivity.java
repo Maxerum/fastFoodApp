@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
 import com.example.fastfoodapp.eugene.menu.MenuActivity;
 
 public class MainActivity extends AppCompatActivity {

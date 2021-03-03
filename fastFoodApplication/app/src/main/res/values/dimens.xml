@@ -13,5 +13,6 @@
     <dimen name="big_text_size">19sp</dimen>
 
     <integer name="initial_menu_item_quantity">0</integer>
+    <dimen name="button_rounded_corners_radius">20dp</dimen>
 
 </resources>

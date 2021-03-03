@@ -1,12 +1,20 @@
 package com.example.fastfoodapp.Maxerum;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.fastfoodapp.Dim4es.PayPage.PayMainActivity;
 import com.example.fastfoodapp.R;
 
 import java.lang.reflect.Array;
@@ -41,5 +49,14 @@ public class OrderPayingActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        // Maxim, что за button12 ???    щ(ಠ益ಠщ)
+        // чтобы исправил!!
+        Button payButton = findViewById(R.id.button12);
+        payButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PayMainActivity.class);
+            startActivity(intent);
+        });
     }
+
 }
