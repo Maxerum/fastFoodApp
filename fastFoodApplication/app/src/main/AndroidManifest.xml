@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FastFoodApp">
+        <activity android:name=".Dim4es.SuccessPay.SuccessPayPage"></activity>
+        <activity android:name=".Dim4es.CreditCard.AddFormatCreditCard" />
+        <activity
+            android:name=".Dim4es.PayPage.PayMainActivity"
+            android:theme="@style/Theme.Design.NoActionBar" />
+
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
 
