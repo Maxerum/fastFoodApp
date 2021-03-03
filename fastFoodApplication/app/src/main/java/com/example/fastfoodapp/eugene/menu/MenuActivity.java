@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
-import com.example.fastfoodapp.eugene.menu.ActivityUtils;
+import com.example.fastfoodapp.eugene.util.ActivityUtils;
 
 public class MenuActivity extends AppCompatActivity {
 

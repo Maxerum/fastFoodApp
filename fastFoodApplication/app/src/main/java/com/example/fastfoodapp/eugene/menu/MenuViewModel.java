@@ -54,12 +54,12 @@ public class MenuViewModel {
     }
 
     @BindingAdapter("bind:handler")
-    public static void bindViewPagerAdapter(ViewPager2 viewPager, MenuViewModel viewModel) {
+    public static void setAdapter(ViewPager2 viewPager, MenuViewModel viewModel) {
         ((MenuFragment.ViewPagerAdapter) viewPager.getAdapter()).replaceData(viewModel.getFragmentList());
     }
 
     @BindingAdapter("bind:pager")
-    public static void bindViewPagerTabs(TabLayout tabLayout, ViewPager2 viewPager) {
+    public static void setupTabs(TabLayout tabLayout, ViewPager2 viewPager) {
         if (viewPager != null && viewPager.getAdapter() != null) {
             ArrayList<String> categories = MenuViewModel.getMenuCategoriesList();
             TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPager,

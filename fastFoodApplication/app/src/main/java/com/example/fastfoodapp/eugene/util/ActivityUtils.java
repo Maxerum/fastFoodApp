@@ -1,4 +1,4 @@
-package com.example.fastfoodapp.eugene.menu;
+package com.example.fastfoodapp.eugene.util;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
