@@ -7,12 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    // Dim4es added
     <color name="appBlueColor">#28334A</color>
     <color name="appRedColor">#F65058</color>
 
-
+    // Eugene added
     <color name="fastfoodapp_red">#F65058</color>
     <color name="fastfoodapp_dark_blue">#28334A</color>
     <color name="fastfoodapp_yellow">#FBDE44</color>
     <color name="fastfoodapp_light_gray">#ECEDF1</color>
+
+    // Maxerum added
+    <color name="main_color">#28334A</color>
 </resources>

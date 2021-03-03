@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FastFoodApp">
-        <activity android:name=".Dim4es.SuccessPay.SuccessPayPage"></activity>
+        <activity android:name=".Dim4es.SuccessPay.SuccessPayPage" />
         <activity android:name=".Dim4es.CreditCard.AddFormatCreditCard" />
         <activity
             android:name=".Dim4es.PayPage.PayMainActivity"
@@ -18,9 +18,9 @@
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
 
+        <activity android:name=".Maxerum.OrderPayingActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.ALL_APPS" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,6 +29,9 @@
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

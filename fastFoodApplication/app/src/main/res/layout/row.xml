@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinearLayout android:padding="16dp" android:orientation="horizontal" android:layout_height="wrap_content" android:layout_width="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView android:layout_height="75dp" android:layout_width="75dp" android:id="@+id/image" android:src="@mipmap/ic_launcher"/>
+
+
+    <LinearLayout android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="match_parent">
+
+    <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/textView1" android:textSize="20sp" android:layout_margin="5dp" android:textStyle="bold" android:textColor="#000" android:text="Main Title"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/textView2" android:textSize="15sp" android:layout_margin="5dp" android:textStyle="bold" android:textColor="#a9a9a9" android:text="Sub Title"/>
+
+    <!--so our layout is set-->
+
+
+</LinearLayout>
+
+</LinearLayout>

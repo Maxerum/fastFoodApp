@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">fastFoodApp</string>
 
+    <string name="pay">PAY</string>
+    <string name="cancel">CANCEL</string>
+
+
     <string name="menu">Menu</string>
     <string name="account">Account</string>
     <string name="fab_description">Go to cart</string>
     <string name="no_data_error_message">No data</string>
-
 </resources>
