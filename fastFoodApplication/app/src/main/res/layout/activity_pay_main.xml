@@ -46,18 +46,19 @@
         android:layout_marginTop="260dp"
         android:orientation="horizontal"
         android:paddingLeft="12dp"
+        android:background="@color/appBlueColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:paddingLeft="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:paddingLeft="12dp"
             android:text="Выберите ресторан"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <Space
@@ -76,7 +77,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:paddingLeft="12dp"
         android:id="@+id/linearLayout2"
         android:layout_width="410dp"
         android:layout_height="186dp"
@@ -94,9 +94,9 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:paddingLeft="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
             android:text="Способ оплаты:"
             android:textColor="@color/black"
             android:textSize="22sp" />
