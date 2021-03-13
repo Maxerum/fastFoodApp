@@ -33,7 +33,7 @@ public class PayMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay_main);
+        setContentView(R.layout.dim4es_activity_pay_main);
 
         //define all buttons with id in xml
         userCreditCard = findViewById(R.id.userCreditCard);

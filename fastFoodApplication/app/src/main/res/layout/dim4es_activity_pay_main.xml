@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/toolbar_for_pay_page" />
+        layout="@layout/dim4es_toolbar_for_pay_page" />
 
     <TextView
         android:id="@+id/textView"

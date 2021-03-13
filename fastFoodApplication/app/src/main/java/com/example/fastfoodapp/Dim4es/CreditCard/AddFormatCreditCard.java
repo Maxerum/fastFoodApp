@@ -15,7 +15,7 @@ public class AddFormatCreditCard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_format_credit_card);
+        setContentView(R.layout.dim4es_activity_add_format_credit_card);
 
 
         //define arrowBackCreditCard
