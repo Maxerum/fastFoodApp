@@ -42,7 +42,7 @@ public class PayMainActivity extends AppCompatActivity {
 
 
         //define arrow in toolbar
-        arrowBackPayPage = findViewById(R.id.arrowBackPayPage);
+        arrowBackPayPage = findViewById(R.id.arrowBackOnPayPage);
 
         //INfo about "Choose restaurant"
         textViewToChooseSpinner = findViewById(R.id.textViewToChooseSpinner);
