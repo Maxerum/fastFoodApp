@@ -11,6 +11,91 @@
         android:id="@+id/include"
         layout="@layout/dim4es_toolbar_for_credit_card" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.261">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Название"
+            android:textSize="22dp"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/cardNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Карта 3"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include">
+
+        <LinearLayout
+            android:id="@+id/topLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/cardNumberEditText"
+                android:inputType=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Номер Карты"
+                android:textSize="22dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topLayout"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/cardValidDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Срок Действия"
+                android:textSize="22dp" />
+
+            <ImageView
+                android:id="@+id/chooseDateImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/textSrok"
+                android:layout_weight="5"
+                android:src="@drawable/dim4es_ic_baseline_calendar_today_24" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/readyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dim4es_button_shape_blue"
+        android:text="Готово"
+        android:textSize="22dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.866" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
