@@ -6,20 +6,21 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
 
 import com.example.fastfoodapp.Dim4es.PayPage.PayMainActivity;
+import com.example.fastfoodapp.Dim4es.Watchers.CreditCardWatcher;
 import com.example.fastfoodapp.R;
 
 public class AddFormatCreditCard extends AppCompatActivity {
     ImageView arrowBackOnCreditCard, calendarIcon;
     Dialog validCreditCardDialog;
     String month, year;
-    TextView cardValidDate;
-
+    EditText cardValidDate, cardNumberEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,26 @@ public class AddFormatCreditCard extends AppCompatActivity {
             }
         });
 
+
+        //define edit text to show Choose date dialog
+        cardValidDate = findViewById(R.id.cardValidDate);
+        cardValidDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showValidCreditCardDialog();
+            }
+        });
+
+
+
+
+        //define cardNumberEditText
+        cardNumberEditText = findViewById(R.id.cardNumberEditText);
+        //create CreditCardWatcher
+        CreditCardWatcher creditCardWatcher = new CreditCardWatcher(cardNumberEditText);
+        cardNumberEditText.addTextChangedListener(creditCardWatcher);
     }
+
 
     private void showValidCreditCardDialog() {
         validCreditCardDialog = new Dialog(this); // create Dialog obj
