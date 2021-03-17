@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fastfoodapp.eugene.menu.InfoDialogViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="340dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/dialog_rounded_bg">
+
+        <ImageButton
+            android:id="@+id/dismiss_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_gray_close_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@id/menu_item_image"
+            android:layout_width="340dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1.5:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dismiss_dialog"
+            android:src="@drawable/burger_image"
+            app:source="@{viewModel.mImageUri}"/>
+
+        <TextView
+            android:id="@+id/menu_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="@{viewModel.mTitle}"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Biggest.Dark.Bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menu_item_image" />
+
+        <TextView
+            android:id="@+id/ingredients_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:text="@string/ingredients"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark.Bold"
+            app:layout_constraintEnd_toStartOf="@id/ingredients"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menu_item_title" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:layout_marginStart="6dp"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ingredients_text"
+            app:layout_constraintTop_toTopOf="@id/ingredients_text"
+            android:text="@{viewModel.mIngredients}"/>
+
+        <TextView
+            android:id="@+id/calories_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calories"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="30dp"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark.Bold"
+            app:layout_constraintEnd_toStartOf="@+id/calories"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredients_text"/>
+
+        <TextView
+            android:id="@+id/calories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark"
+            app:layout_constraintEnd_toStartOf="@+id/total_fat_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/calories_text"
+            app:layout_constraintTop_toTopOf="@id/calories_text"
+            android:text="@{viewModel.mCalories}"/>
+
+        <TextView
+            android:id="@+id/total_fat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_fat"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark.Bold"
+            app:layout_constraintEnd_toStartOf="@+id/total_fat"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/calories"
+            app:layout_constraintTop_toTopOf="@id/calories_text" />
+
+        <TextView
+            android:id="@+id/total_fat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:layout_marginStart="6dp"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/total_fat_text"
+            app:layout_constraintTop_toTopOf="@id/calories_text"
+            android:text="@{viewModel.mTotalFat}"/>
+
+        <TextView
+            android:id="@+id/total_carbs_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/total_carbs"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark.Bold"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/calories_text"
+            app:layout_constraintTop_toBottomOf="@id/calories_text"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/total_carbs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark"
+            app:layout_constraintEnd_toStartOf="@+id/total_fat_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/total_carbs_text"
+            app:layout_constraintTop_toTopOf="@id/total_carbs_text"
+            android:text="@{viewModel.mTotalCarbs}"/>
+
+        <TextView
+            android:id="@+id/protein_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/protein"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark.Bold"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/total_fat_text"
+            app:layout_constraintTop_toTopOf="@id/total_carbs_text" />
+
+        <TextView
+            android:id="@+id/protein"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Small.Dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/protein_text"
+            app:layout_constraintTop_toTopOf="@id/total_carbs_text"
+            android:text="@{viewModel.mProtein}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
+import com.example.fastfoodapp.eugene.account.AccountActivity;
+import com.example.fastfoodapp.eugene.authorization.AuthorizationActivity;
 import com.example.fastfoodapp.eugene.menu.MenuActivity;
 
 public class MainActivity extends AppCompatActivity {

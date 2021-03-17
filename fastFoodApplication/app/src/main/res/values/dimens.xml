@@ -9,10 +9,21 @@
     <dimen name="menu_item_card_corner_radius">12dp</dimen>
     <dimen name="menu_item_card_elevation">4dp</dimen>
     <dimen name="grid_item_spacing">12dp</dimen>
-    <dimen name="menu_item_layout_margin">8dp</dimen>
+    <dimen name="menu_item_layout_margin">5dp</dimen>
     <dimen name="big_text_size">19sp</dimen>
 
     <integer name="initial_menu_item_quantity">0</integer>
-    <dimen name="button_rounded_corners_radius">20dp</dimen>
+    <dimen name="button_rounded_corners_radius">12dp</dimen>
+    <dimen name="welcome_screen_text_size">60dp</dimen>
+    <dimen name="welcome_screen_button_height">56dp</dimen>
+    <dimen name="welcome_screen_side_margin">7dp</dimen>
+    <dimen name="small_text_size">16sp</dimen>
+    <dimen name="huge_text_size">22sp</dimen>
+    <dimen name="biggest_text_size">30sp</dimen>
+    <dimen name="regular_text_size">16sp</dimen>
+    <dimen name="account_screen_button_height">70dp</dimen>
+
+    <integer name="button_anim_time">150</integer>
+    <dimen name="dialog_rounded_corners_radius">20dp</dimen>
 
 </resources>

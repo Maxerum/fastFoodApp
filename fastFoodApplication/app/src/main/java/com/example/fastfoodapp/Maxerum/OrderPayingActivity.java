@@ -33,11 +33,11 @@ public class OrderPayingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_paying);
 
         ArrayList<ExampleItem> exampleList = new ArrayList<>();
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger #1","Meat"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger #2","Meat"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger #3","Meat"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger #4","Meat"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger #5","Meat"));
 
 
 

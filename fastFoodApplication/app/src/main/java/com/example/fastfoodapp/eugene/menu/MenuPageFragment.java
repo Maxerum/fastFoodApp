@@ -1,11 +1,15 @@
 package com.example.fastfoodapp.eugene.menu;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.databinding.MenuItemBinding;
 import com.example.fastfoodapp.databinding.MenuPageFragmentBinding;
-import com.example.fastfoodapp.eugene.data.MenuItem;
+import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
+import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 import com.example.fastfoodapp.eugene.util.SpacingItemDecoration;
 
 import java.util.ArrayList;
@@ -30,10 +35,10 @@ public class MenuPageFragment extends Fragment {
 
     private MenuPageViewModel mMenuPageViewModel;
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mMenuPageViewModel.start(null);
+    private final MenuItemsLocalDataSource mDataSource;
+
+    public MenuPageFragment(MenuItemsLocalDataSource dataSource) {
+        mDataSource = dataSource;
     }
 
     @Nullable
@@ -50,12 +55,13 @@ public class MenuPageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setupRecyclerView();
+        mMenuPageViewModel.start();
     }
 
     private void setupRecyclerView() {
         RecyclerView recyclerView = mMenuPageFragmentBinding.recyclerView;
         recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), SPAN_COUNT));
-        recyclerView.setAdapter(new MenuItemsAdapter(new ArrayList<>(0), getContext()));
+        recyclerView.setAdapter(new MenuItemsAdapter(new ArrayList<>(0), getContext(), mDataSource));
         SpacingItemDecoration decoration = new SpacingItemDecoration((int) getResources().getDimension(R.dimen.grid_item_spacing),
                 SPAN_COUNT);
         recyclerView.addItemDecoration(decoration);
@@ -67,13 +73,17 @@ public class MenuPageFragment extends Fragment {
 
     public static class MenuItemsAdapter extends RecyclerView.Adapter<MenuItemHolder> {
 
-        private ArrayList<MenuItem> mMenuItems;
+        private ArrayList<MenuItemMainInfo> mMenuItems;
 
-        private Context mContext;
+        private final Context mContext;
+
+        private final MenuItemsLocalDataSource mDataSource;
 
         // TODO: need to create MenuItem class, and pass list of MenuItem objects as a parameter
-        public MenuItemsAdapter(ArrayList<MenuItem> menuItems, Context context) {
+        public MenuItemsAdapter(ArrayList<MenuItemMainInfo> menuItems, Context context,
+                                MenuItemsLocalDataSource dataSource) {
             mContext = context;
+            mDataSource = dataSource;
 
             replaceData(menuItems);
         }
@@ -87,12 +97,12 @@ public class MenuPageFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull MenuItemHolder holder, int position) {
-            MenuItem menuItem = null;
-            if (mMenuItems != null && !mMenuItems.isEmpty()) {
+            MenuItemMainInfo menuItem = null;
+            if (mMenuItems != null && position < mMenuItems.size()) {
                 menuItem = mMenuItems.get(position);
             }
             if (menuItem != null) {
-                MenuItemViewModel viewModel = new MenuItemViewModel(mContext);
+                MenuItemViewModel viewModel = new MenuItemViewModel(mContext, mDataSource);
                 viewModel.setMenuItem(menuItem);
 
                 holder.bindData(viewModel);
@@ -101,10 +111,10 @@ public class MenuPageFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return 4;
+            return mMenuItems.size();
         }
 
-        public void replaceData(ArrayList<MenuItem> menuItems) {
+        public void replaceData(ArrayList<MenuItemMainInfo> menuItems) {
             mMenuItems = menuItems;
             notifyDataSetChanged();
         }

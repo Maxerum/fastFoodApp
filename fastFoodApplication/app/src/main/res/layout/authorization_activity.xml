@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="120dp"
-        android:text="@string/app_name"
-        android:textAppearance="@style/FastFoodApp.TextAppearance.WelcomeScreen" />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fastfoodapp.eugene.authorization.AuthorizationViewModel" />
+    </data>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/log_in_action" />-->
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="120dp"
+            android:text="@string/app_name"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.WelcomeScreen" />
 
-</LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/log_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/welcome_screen_button_height"
+            android:layout_marginStart="@dimen/welcome_screen_side_margin"
+            android:layout_marginEnd="@dimen/welcome_screen_side_margin"
+            android:layout_marginTop="260dp"
+            android:text="@string/log_in_action"
+            app:cornerRadius="@dimen/button_rounded_corners_radius"
+            android:onClick="@{() -> viewModel.openLogInWindow()}" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sign_up_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/welcome_screen_button_height"
+            android:layout_marginStart="@dimen/welcome_screen_side_margin"
+            android:layout_marginEnd="@dimen/welcome_screen_side_margin"
+            android:text="@string/sign_up_action"
+            app:cornerRadius="@dimen/button_rounded_corners_radius"
+            android:backgroundTint="@color/fastfoodapp_red"
+            android:onClick="@{() -> viewModel.openSignUpWindow()}"/>
+
+    </LinearLayout>
+
+</layout>

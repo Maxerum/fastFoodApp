@@ -1,43 +1,60 @@
 package com.example.fastfoodapp.eugene.menu;
 
-import android.content.Context;
+import android.util.Log;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fastfoodapp.eugene.data.MenuItem;
+import com.example.fastfoodapp.eugene.data.MenuItemsDataSource;
+import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
+import com.example.fastfoodapp.eugene.data.item.MenuItem;
+import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MenuPageViewModel {
+    public static final String TAG = "MenuPageViewModel";
 
-    public final ObservableArrayList<MenuItem> mItems = new ObservableArrayList<>();
+    private String menuCategory;
 
-    private Context mContext;
+    private final MenuItemsLocalDataSource mDataSource;
 
-    public MenuPageViewModel(Context context) {
-        mContext = context;
+    public final ObservableArrayList<MenuItemMainInfo> mItems = new ObservableArrayList<>();
+
+    public MenuPageViewModel(MenuItemsLocalDataSource dataSource) {
+        mDataSource = dataSource;
     }
 
-    public void start(String category) {
-        loadData(category);
+    public void start() {
+        loadData();
     }
 
-    public void loadData(String category) {
-        ArrayList<MenuItem> items = new ArrayList<>();
+    public void setMenuCategory(String category) {
+        menuCategory = category;
+    }
 
-        items.add(new MenuItem("Cheeseburger", 0, 0, "2.40 $", null));
-        items.add(new MenuItem("The Original Burger", 0, 0, "4.90 $", null));
-        items.add(new MenuItem("Chargrilled Burger", 0, 0, "5.00 $", null));
-        items.add(new MenuItem("Luger Burger", 0, 0, "1.70 $", null));
+    public void loadData() {
+        mDataSource.getMenuItemsMainInfo(menuCategory, new MenuItemsDataSource.LoadMenuItemsMainInfoCallback() {
+            @Override
+            public void onMenuItemsLoaded(List<MenuItemMainInfo> items) {
+                mItems.clear();
+                mItems.addAll(items);
+            }
 
-        mItems.clear();
-        mItems.addAll(items);
+            @Override
+            public void onDataNotAvailable() {
+                Log.d(TAG, "Data not available");
+            }
+        });
     }
 
     @BindingAdapter("app:items")
-    public static void setItems(RecyclerView recyclerView, ArrayList<MenuItem> items) {
-        ((MenuPageFragment.MenuItemsAdapter) recyclerView.getAdapter()).replaceData(items);
+    public static void setItems(RecyclerView recyclerView, ArrayList<MenuItemMainInfo> items) {
+        MenuPageFragment.MenuItemsAdapter adapter = (MenuPageFragment.MenuItemsAdapter) recyclerView.getAdapter();
+        if (adapter != null) {
+            adapter.replaceData(items);
+        }
     }
 }

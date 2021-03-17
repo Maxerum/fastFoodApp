@@ -41,6 +41,7 @@ public class MenuFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        mMenuViewModel.start();
     }
 
     @Nullable
@@ -54,7 +55,7 @@ public class MenuFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        setupToolbar(view);
+        setupToolbar();
 
         setupViewPager();
     }
@@ -75,8 +76,8 @@ public class MenuFragment extends Fragment {
         return true;
     }
 
-    private void setupToolbar(View view) {
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+    private void setupToolbar() {
+        Toolbar toolbar = mMenuFragmentBinding.menuToolbar;
         ((AppCompatActivity) getContext()).setSupportActionBar(toolbar);
 
         setHasOptionsMenu(true);

@@ -31,6 +31,14 @@
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
+        <activity android:name=".eugene.authorization.AuthorizationActivity"
+            android:theme="@style/Theme.FastFoodApp.NoActionBar">
+        </activity>
+
+        <activity android:name=".eugene.account.AccountActivity"
+            android:theme="@style/Theme.FastFoodApp.NoActionBar">
+        </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
