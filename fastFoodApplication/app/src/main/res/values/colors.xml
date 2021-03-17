@@ -11,7 +11,8 @@
     // Dim4es added
     <color name="appBlueColor">#28334A</color>
     <color name="appRedColor">#F65058</color>
-
+    <color name="colorGreen">#247B37</color>
+    <color name="appBackGround">#C69111</color>
     // Eugene added
     <color name="fastfoodapp_red">#F65058</color>
     <color name="fastfoodapp_dark_blue">#28334A</color>

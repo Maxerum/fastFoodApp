@@ -16,7 +16,7 @@ public class SuccessPayPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_success_pay_page);
+        setContentView(R.layout.dim4es_activity_success_pay_page);
 
         //define el-s
         buttonBack = findViewById(R.id.buttonBack);

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fastfoodapp.Dim4es.CreditCard.AddFormatCreditCard;
+import com.example.fastfoodapp.Dim4es.SuccessPay.SuccessPayPage;
 import com.example.fastfoodapp.R;
 public class PayMainActivity extends AppCompatActivity {
     ImageView arrowBackPayPage;
@@ -32,7 +33,7 @@ public class PayMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay_main);
+        setContentView(R.layout.dim4es_activity_pay_main);
 
         //define all buttons with id in xml
         userCreditCard = findViewById(R.id.userCreditCard);
@@ -41,7 +42,7 @@ public class PayMainActivity extends AppCompatActivity {
 
 
         //define arrow in toolbar
-        arrowBackPayPage = findViewById(R.id.arrowBackPayPage);
+        arrowBackPayPage = findViewById(R.id.arrowBackOnPayPage);
 
         //INfo about "Choose restaurant"
         textViewToChooseSpinner = findViewById(R.id.textViewToChooseSpinner);
@@ -109,9 +110,11 @@ public class PayMainActivity extends AppCompatActivity {
         finalSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(PayMainActivity.this, "Отправить в печь - button is clicked", Toast.LENGTH_SHORT);
+                /*Toast toast = Toast.makeText(PayMainActivity.this, "Отправить в печь - button is clicked", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.LEFT | Gravity.TOP, 20, 30);
-                toast.show();
+                toast.show();*/
+                Intent intent = new Intent(PayMainActivity.this, SuccessPayPage.class);
+                startActivity(intent);
             }
         });
 
@@ -124,8 +127,8 @@ public class PayMainActivity extends AppCompatActivity {
         String choose = adapter.getItem(position).toString();
 
         //some log info
-        Toast toast = Toast.makeText(getApplicationContext(), "Selected rest." + choose, Toast.LENGTH_SHORT);
-        toast.show();
+        //Toast toast = Toast.makeText(getApplicationContext(), "Selected rest." + choose, Toast.LENGTH_SHORT);
+        //toast.show();
         return choose;
     }
 

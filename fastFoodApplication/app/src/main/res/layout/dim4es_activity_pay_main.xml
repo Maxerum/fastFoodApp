@@ -9,24 +9,28 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/toolbar_for_pay_page" />
+        layout="@layout/dim4es_toolbar_for_pay_page" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:paddingLeft="12dp"
         android:text="Ваш заказ будет ждать вас по адресу:"
-        android:textSize="18sp"
         android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="413dp"
-        android:layout_height="121dp"
+        android:paddingLeft="12dp"
+        android:id="@+id/textViewToChooseSpinner"
+        android:textSize="20sp"
+        android:layout_width="411dp"
+        android:layout_height="103dp"
         android:layout_marginTop="136dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,27 +38,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
+        android:layout_width="411dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="260dp"
         android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:background="@color/appBlueColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"/>
         <TextView
-            android:id="@+id/textViewToChooseSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:paddingLeft="12dp"
             android:text="Выберите ресторан"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <Space
             android:layout_width="10dp"
@@ -62,18 +67,19 @@
             android:layout_weight="0" />
 
         <Spinner
+            android:background="@color/appBlueColor"
             android:id="@+id/restaurantSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scrollbarSize="10dp" />
 
     </LinearLayout>
 
-
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="410dp"
-        android:layout_height="186dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="144dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -90,6 +96,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
             android:text="Способ оплаты:"
             android:textColor="@color/black"
             android:textSize="22sp" />
@@ -99,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/appBlueColor"
+            android:background="@drawable/dim4es_button_shape_blue"
             android:text="Карточка пользователя"
             android:textSize="18sp" />
 
@@ -108,9 +115,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/appRedColor"
+            android:background="@drawable/dim4es_button_shape_red"
             android:text="Добавить карточку для оплаты"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
 
     </LinearLayout>
@@ -121,7 +128,8 @@
         android:layout_height="wrap_content"
         android:text="Отправить в печь"
         android:textSize="22sp"
-        android:background="@color/appBlueColor"
+
+        android:background="@drawable/dim4es_button_shape_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
