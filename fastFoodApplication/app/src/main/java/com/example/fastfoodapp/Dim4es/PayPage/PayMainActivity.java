@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.fastfoodapp.Dim4es.CreditCard.AddFormatCreditCard;
 import com.example.fastfoodapp.Dim4es.SuccessPay.SuccessPayPage;
+import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
 import com.example.fastfoodapp.R;
 public class PayMainActivity extends AppCompatActivity {
     ImageView arrowBackPayPage;
@@ -73,10 +74,8 @@ public class PayMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Arrow back to return to previous page
-                //log info
-                Toast toast = Toast.makeText(PayMainActivity.this, "Back arrow clicked", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.LEFT | Gravity.TOP, 20, 30);
-                toast.show();
+                Intent intent = new Intent(PayMainActivity.this, OrderPayingActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -86,9 +85,6 @@ public class PayMainActivity extends AppCompatActivity {
         userCreditCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(PayMainActivity.this, "User credit card button clicked", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.LEFT | Gravity.TOP, 20, 30);
-                toast.show();
             }
         });
 
@@ -97,9 +93,6 @@ public class PayMainActivity extends AppCompatActivity {
         addUserCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Toast toast = Toast.makeText(PayMainActivity.this, "Add user credit Card button clicked", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.LEFT | Gravity.TOP, 20, 30);
-                toast.show();*/
                 Intent intent = new Intent(PayMainActivity.this, AddFormatCreditCard.class);
                 startActivity(intent);
             }
@@ -110,9 +103,6 @@ public class PayMainActivity extends AppCompatActivity {
         finalSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Toast toast = Toast.makeText(PayMainActivity.this, "Отправить в печь - button is clicked", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.LEFT | Gravity.TOP, 20, 30);
-                toast.show();*/
                 Intent intent = new Intent(PayMainActivity.this, SuccessPayPage.class);
                 startActivity(intent);
             }
@@ -126,9 +116,6 @@ public class PayMainActivity extends AppCompatActivity {
         Adapter adapter = adapterView.getAdapter();
         String choose = adapter.getItem(position).toString();
 
-        //some log info
-        //Toast toast = Toast.makeText(getApplicationContext(), "Selected rest." + choose, Toast.LENGTH_SHORT);
-        //toast.show();
         return choose;
     }
 
