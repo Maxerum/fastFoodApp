@@ -21,8 +21,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class OrderPayingActivity extends AppCompatActivity {
+
+    private ArrayList<ExampleItem> exampleList;
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private ExampleAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -31,32 +33,53 @@ public class OrderPayingActivity extends AppCompatActivity {
         System.out.println("Trying outside");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_paying);
-
-        ArrayList<ExampleItem> exampleList = new ArrayList<>();
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger","cool"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger","cool"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger","cool"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger","cool"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "Burger","cool"));
-
-
-
-
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new ExampleAdapter(exampleList);
-
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-
+        System.out.println("ЗДАРОВА");
+        createExampleList();
+        System.out.println("ЗДАРОВА");
+        buildRecyclerView();
+        setButtons();
         // Maxim, что за button12 ???    щ(ಠ益ಠщ)
         // чтобы исправил!!
+        //НЕ ТВОЕ ДЕЛО ЧОРТ
+
+    }
+
+    public void removeItem(int position) {
+        System.out.println("REMOVER item");
+        exampleList.remove(position);
+        mAdapter.notifyItemRemoved(position);
+    }
+
+    private void setButtons() {
         Button payButton = findViewById(R.id.button12);
         payButton.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PayMainActivity.class);
             startActivity(intent);
         });
+    }
+
+    private void buildRecyclerView() {
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new ExampleAdapter(exampleList);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+                removeItem(position);
+            }
+        });
+    }
+
+    public void createExampleList(){
+        exampleList = new ArrayList<>();
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
     }
 
 }
