@@ -28,6 +28,7 @@
             android:textColorHint="@color/black"
             app:hintTextAppearance="@style/TextLabel"
             app:errorEnabled="true"
+            app:errorTextAppearance="@style/ErrorText"
             >
             <EditText
                 android:id="@+id/cardNameEditText"
@@ -42,7 +43,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="155dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,26 +53,27 @@
             android:id="@+id/credit_card_number_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintTextColor="@color/purple_700"
             android:textColorHint="@color/black"
-            app:hintTextAppearance="@style/TextLabel"
-            >
+            app:hintTextColor="@color/purple_700"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/ErrorText"
+            app:hintTextAppearance="@style/TextLabel">
             <EditText
                 android:id="@+id/cardNumberEditText"
-                android:inputType="number"
-                android:maxLength="19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Номер карты"
+                android:inputType="number"
+                android:maxLength="19"
                 android:textSize="22dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_below="@+id/credit_card_number_input"
-            android:orientation="horizontal">
-
+            >
             <EditText
                 android:id="@+id/cardValidDate"
                 android:focusable="false"
