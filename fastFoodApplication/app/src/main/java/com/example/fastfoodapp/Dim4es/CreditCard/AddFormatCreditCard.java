@@ -5,28 +5,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.fastfoodapp.Dim4es.PayPage.PayMainActivity;
 import com.example.fastfoodapp.Dim4es.Watchers.CreditCardWatcher;
 import com.example.fastfoodapp.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class AddFormatCreditCard extends AppCompatActivity {
     ImageView arrowBackOnCreditCard, calendarIcon;
     Dialog validCreditCardDialog;
     String month, year;
     EditText cardValidDate, cardNumberEditText;
+    TextInputLayout creditCardNameInput, creditCardNumberInput;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dim4es_activity_add_format_credit_card);
-
+        //define TextInputLayouts
+        creditCardNameInput = findViewById(R.id.credit_card_name_input);
+        creditCardNumberInput = findViewById(R.id.credit_card_number_input);
 
         //define arrowBackCreditCard
         arrowBackOnCreditCard = findViewById(R.id.arrowBackOnCreditCardPage);
@@ -123,5 +131,43 @@ public class AddFormatCreditCard extends AppCompatActivity {
 
         //show dialog
         validCreditCardDialog.show();
+    }
+
+
+    public void confirmInput(View v){
+        if(!validateCreditCardName() | !validateCreditCardNumber()){
+            return;
+        }
+        String input = "Name:" + creditCardNameInput.getEditText().getText().toString();
+        //Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean validateCreditCardName(){
+        String nameInput = creditCardNameInput.getEditText().getText().toString();
+
+        if(nameInput.isEmpty()){
+            creditCardNameInput.setError("Field can't be empty!");
+            return false;
+        } else {
+            creditCardNameInput.setError(null);
+            creditCardNameInput.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private boolean validateCreditCardNumber() {
+        String numberInput = creditCardNumberInput.getEditText().getText().toString().trim();
+        
+        if (numberInput.isEmpty()) {
+            creditCardNumberInput.setError("Field can't be empty!");
+            return false;
+        } else if (numberInput.length() < 16) {
+            creditCardNumberInput.setError("Credit card number length is 16");
+            return false;
+        } else {
+            creditCardNameInput.setError(null);
+            creditCardNameInput.setErrorEnabled(false);
+            return true;
+        }
     }
 }
