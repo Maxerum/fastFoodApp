@@ -25,13 +25,19 @@ public class AddFormatCreditCard extends AppCompatActivity {
     String month, year;
     EditText cardValidDate, cardNumberEditText;
     TextInputLayout creditCardNameInput, creditCardNumberInput;
-
+    TextView errorMessage;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dim4es_activity_add_format_credit_card);
+
+
+        //define error Message TextView
+        errorMessage = findViewById(R.id.errorTextView);
+
+
         //define TextInputLayouts
         creditCardNameInput = findViewById(R.id.credit_card_name_input);
         creditCardNumberInput = findViewById(R.id.credit_card_number_input);
@@ -135,7 +141,7 @@ public class AddFormatCreditCard extends AppCompatActivity {
 
 
     public void confirmInput(View v){
-        if(!validateCreditCardName() | !validateCreditCardNumber()){
+        if(!validateCreditCardName() | !validateCreditCardNumber() | !validateDate()){
             return;
         }
         String input = "Name:" + creditCardNameInput.getEditText().getText().toString();
@@ -157,16 +163,27 @@ public class AddFormatCreditCard extends AppCompatActivity {
 
     private boolean validateCreditCardNumber() {
         String numberInput = creditCardNumberInput.getEditText().getText().toString().trim();
-        
+        int length = numberInput.length();
         if (numberInput.isEmpty()) {
             creditCardNumberInput.setError("Field can't be empty!");
             return false;
-        } else if (numberInput.length() < 16) {
+        } else if (numberInput.length() < 19) {
             creditCardNumberInput.setError("Credit card number length is 16");
             return false;
         } else {
-            creditCardNameInput.setError(null);
-            creditCardNameInput.setErrorEnabled(false);
+            creditCardNumberInput.setError(null);
+            creditCardNumberInput.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private boolean validateDate(){
+        String dateInput = cardValidDate.getText().toString();
+        if(dateInput.equals("Срок Действия")){
+            errorMessage.setText("Выберите дату");
+            return false;
+        }else {
+            errorMessage.setText(null);
             return true;
         }
     }

@@ -43,7 +43,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="155dp"
+        android:layout_height="175dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +69,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
+            android:id="@+id/choose_date_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -96,6 +97,16 @@
                 android:layout_weight="5"
                 android:src="@drawable/dim4es_ic_baseline_calendar_today_24" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/errorTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/choose_date_layout"
+            android:text=""
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/red"
+            />
     </RelativeLayout>
 
     <Button
