@@ -47,7 +47,7 @@ public class MenuViewModel {
         ArrayList<MenuPageFragment> fragments = new ArrayList<>();
 
         for (MenuCategory category : categories) {
-            MenuPageFragment fragment = new MenuPageFragment(mDataSource);
+            MenuPageFragment fragment = new MenuPageFragment();
             MenuPageViewModel viewModel = new MenuPageViewModel(mDataSource);
             viewModel.setMenuCategory(category.getCategory());
             fragment.setViewModel(viewModel);

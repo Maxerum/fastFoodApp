@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fastfoodapp.AppContainer;
+import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.databinding.MenuItemBinding;
 import com.example.fastfoodapp.databinding.MenuPageFragmentBinding;
@@ -35,10 +37,7 @@ public class MenuPageFragment extends Fragment {
 
     private MenuPageViewModel mMenuPageViewModel;
 
-    private final MenuItemsLocalDataSource mDataSource;
-
-    public MenuPageFragment(MenuItemsLocalDataSource dataSource) {
-        mDataSource = dataSource;
+    public MenuPageFragment() {
     }
 
     @Nullable
@@ -61,7 +60,11 @@ public class MenuPageFragment extends Fragment {
     private void setupRecyclerView() {
         RecyclerView recyclerView = mMenuPageFragmentBinding.recyclerView;
         recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), SPAN_COUNT));
-        recyclerView.setAdapter(new MenuItemsAdapter(new ArrayList<>(0), getContext(), mDataSource));
+
+        AppContainer container = ((FastFoodApp) getActivity().getApplication()).appContainer;
+        recyclerView.setAdapter(new MenuItemsAdapter(new ArrayList<>(0), getContext(),
+                container.dataSource));
+
         SpacingItemDecoration decoration = new SpacingItemDecoration((int) getResources().getDimension(R.dimen.grid_item_spacing),
                 SPAN_COUNT);
         recyclerView.addItemDecoration(decoration);
