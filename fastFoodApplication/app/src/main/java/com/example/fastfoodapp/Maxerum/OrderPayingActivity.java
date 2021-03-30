@@ -52,9 +52,13 @@ public class OrderPayingActivity extends AppCompatActivity {
 
     private void setButtons() {
         Button payButton = findViewById(R.id.button12);
+        Button cancelButton = findViewById(R.id.cancel_button);
         payButton.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PayMainActivity.class);
             startActivity(intent);
+        });
+        cancelButton.setOnClickListener(v->{
+            finish();
         });
     }
 
