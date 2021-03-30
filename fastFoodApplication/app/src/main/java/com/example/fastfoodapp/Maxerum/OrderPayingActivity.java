@@ -79,11 +79,12 @@ public class OrderPayingActivity extends AppCompatActivity {
 
     public void createExampleList(){
         exampleList = new ArrayList<>();
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "FUCKING BIRGER","KEKC"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
     }
 
 }
