@@ -25,7 +25,7 @@
 
         <ImageView
             android:id="@id/menu_item_image"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1.5:1"
             app:layout_constraintEnd_toEndOf="parent"

@@ -101,6 +101,9 @@ public class MenuItemsLocalDataSource implements MenuItemsDataSource {
         executor.execute(() -> {
             if (menuCategoriesDao.getAll().isEmpty()) {
                 prepopulateDatabase();
+            } else {
+//                menuCategoriesDao.deleteAll();
+//                menuItemsDao.deleteAll();
             }
         });
     }

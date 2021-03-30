@@ -1,7 +1,6 @@
 package com.example.fastfoodapp.eugene.menu;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -13,16 +12,8 @@ import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
-import com.example.fastfoodapp.eugene.data.MenuItemsDatabase;
-import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
-import com.example.fastfoodapp.eugene.data.category.MenuCategories;
-import com.example.fastfoodapp.eugene.data.category.MenuCategory;
-import com.example.fastfoodapp.eugene.data.item.MenuItem;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
 
-import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MenuActivity extends AppCompatActivity implements ShoppingCartNavigator {
 
@@ -61,6 +52,7 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
 
             AppContainer container = ((FastFoodApp) getApplication()).appContainer;
             MenuViewModel viewModel = new MenuViewModel(container.dataSource);
+            container.dataSource.prepopulateDatabaseIfNeeded();
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
                     ViewModelHolder.createContainer(viewModel), MenuViewModel.TAG);
