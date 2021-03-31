@@ -74,8 +74,9 @@ public class PayMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Arrow back to return to previous page
-                Intent intent = new Intent(PayMainActivity.this, OrderPayingActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(PayMainActivity.this, OrderPayingActivity.class);
+                //startActivity(intent);
+                onBackPressed();
             }
         });
 

@@ -24,8 +24,9 @@ public class SuccessPayPage extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SuccessPayPage.this, PayMainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(SuccessPayPage.this, PayMainActivity.class);
+//                startActivity(intent);
+                onBackPressed();
             }
         });
     }

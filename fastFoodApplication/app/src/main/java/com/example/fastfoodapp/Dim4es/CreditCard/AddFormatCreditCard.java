@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -26,12 +27,14 @@ public class AddFormatCreditCard extends AppCompatActivity {
     EditText cardValidDate, cardNumberEditText;
     TextInputLayout creditCardNameInput, creditCardNumberInput;
     TextView errorMessage;
-
+    Button readyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dim4es_activity_add_format_credit_card);
+
+
 
 
         //define error Message TextView
@@ -49,8 +52,9 @@ public class AddFormatCreditCard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //back to previous page(pay page)
-                Intent intent = new Intent(AddFormatCreditCard.this, PayMainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(AddFormatCreditCard.this, PayMainActivity.class);
+//                startActivity(intent);
+                onBackPressed();
             }
         });
 
@@ -145,6 +149,13 @@ public class AddFormatCreditCard extends AppCompatActivity {
             return;
         }
         String input = "Name:" + creditCardNameInput.getEditText().getText().toString();
+
+//        Intent intent = new Intent(AddFormatCreditCard.this, PayMainActivity.class);
+//        startActivity(intent);
+        onBackPressed();
+        creditCardNumberInput.getEditText().setText("");
+        creditCardNumberInput.getEditText().setText("");
+        cardValidDate.setText("");
         //Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
     }
 
