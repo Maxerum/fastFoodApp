@@ -144,8 +144,10 @@ public class AddFormatCreditCard extends AppCompatActivity {
         if(!validateCreditCardName() | !validateCreditCardNumber() | !validateDate()){
             return;
         }
-        String input = "Name:" + creditCardNameInput.getEditText().getText().toString();
-        //Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
+        String name = creditCardNameInput.getEditText().getText().toString(),
+               number = creditCardNumberInput.getEditText().getText().toString(),
+               date = cardValidDate.getText().toString();
+        System.out.println(name + number + date);
     }
 
     private boolean validateCreditCardName(){
