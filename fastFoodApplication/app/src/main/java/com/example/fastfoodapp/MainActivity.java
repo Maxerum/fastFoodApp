@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        startAuthenticationFlow();
+//        startAuthenticationFlow();
 
-//        Intent intent = new Intent(this, MenuActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 
     private void startAuthenticationFlow() {

@@ -10,9 +10,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.fastfoodapp.Dim4es.PayPage.PayMainActivity;
 import com.example.fastfoodapp.R;
@@ -28,6 +30,9 @@ public class OrderPayingActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ExampleAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private TextView textView3;
+
+    private HashMap<MenuItemMainInfo, Integer> selectedItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +41,11 @@ public class OrderPayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_paying);
         System.out.println("ЗДАРОВА");
-        createExampleList();
+        Bundle args = getIntent().getExtras();
+        selectedItems = (HashMap<MenuItemMainInfo, Integer>)
+                args.getSerializable("selected items");
+        System.out.println("ЗДАРОВА");
+        createExampleList(selectedItems);
         System.out.println("ЗДАРОВА");
         buildRecyclerView();
         setButtons();
@@ -46,13 +55,12 @@ public class OrderPayingActivity extends AppCompatActivity {
 
 
         // Это я добавил (Женя)
-        Bundle args = getIntent().getExtras();
-        HashMap<MenuItemMainInfo, Integer> selectedItems = (HashMap<MenuItemMainInfo, Integer>)
-                args.getSerializable("selected items");
+
     }
 
     public void removeItem(int position) {
         System.out.println("REMOVER item");
+        selectedItems.remove(position);
         exampleList.remove(position);
         mAdapter.notifyItemRemoved(position);
     }
@@ -84,13 +92,35 @@ public class OrderPayingActivity extends AppCompatActivity {
         });
     }
 
-    public void createExampleList(){
+    public void createExampleList(HashMap<MenuItemMainInfo, Integer> selectedItems){
         exampleList = new ArrayList<>();
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","<INFO>"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","<INFO>"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","<INFO>"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","<INFO>"));
-        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","<INFO>"));
+        textView3 = findViewById(R.id.textView3);
+        float bigSum = 0;
+        String bigSumString = " ", bigSumString2 = " ";
+        int amount;
+        for(MenuItemMainInfo info: selectedItems.keySet()){
+
+//            System.out.println(info.imageUri);
+            String imh = info.imageUri.substring(43,53);
+//            System.out.println(imh);
+            exampleList.add(new ExampleItem(Integer.parseInt(imh), info.title, info.price + " " + "\n" + "x" + selectedItems.get(info)));
+            System.out.println(selectedItems.get(info));
+
+            amount = selectedItems.get(info);
+            String mul = info.price.substring(0, info.price.length() - 2);
+            bigSum += amount * Float.parseFloat(mul);
+            bigSumString = String.format("%.2f", bigSum);
+            bigSumString2 = "TOTAL: " + bigSumString + "$";
+//            bigSum = String.format("%.2f",value);
+//            System.out.println(bigSum);
+        }
+        textView3.setText(bigSumString2);
+//        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+//        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+//        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+//        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+//        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+//        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
     }
 
 }
