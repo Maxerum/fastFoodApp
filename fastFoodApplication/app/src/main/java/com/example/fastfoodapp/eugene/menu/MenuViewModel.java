@@ -1,6 +1,7 @@
 package com.example.fastfoodapp.eugene.menu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 
@@ -21,11 +22,13 @@ import com.example.fastfoodapp.eugene.data.MenuItemsDataSource;
 import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
 import com.example.fastfoodapp.eugene.data.category.MenuCategories;
 import com.example.fastfoodapp.eugene.data.category.MenuCategory;
+import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MenuViewModel {
@@ -47,7 +50,7 @@ public class MenuViewModel {
         ArrayList<MenuPageFragment> fragments = new ArrayList<>();
 
         for (MenuCategory category : categories) {
-            MenuPageFragment fragment = new MenuPageFragment(mDataSource);
+            MenuPageFragment fragment = new MenuPageFragment();
             MenuPageViewModel viewModel = new MenuPageViewModel(mDataSource);
             viewModel.setMenuCategory(category.getCategory());
             fragment.setViewModel(viewModel);
@@ -66,7 +69,6 @@ public class MenuViewModel {
                 menuCategories.addAll(categories);
 
                 loadMenuPages(categories);
-                Log.d(TAG, "menu categories loaded");
             }
 
             @Override
@@ -78,7 +80,6 @@ public class MenuViewModel {
 
     @BindingAdapter("bind:pages")
     public static void setAdapter(ViewPager2 viewPager, ObservableList<MenuPageFragment> fragments) {
-        Log.d(TAG, Integer.toString(fragments.size()));
         MenuFragment.ViewPagerAdapter pagerAdapter = (MenuFragment.ViewPagerAdapter) viewPager.getAdapter();
         if (pagerAdapter != null) {
             pagerAdapter.replaceData(new ArrayList<>(fragments));
@@ -100,7 +101,25 @@ public class MenuViewModel {
 
     public void openOrderPayingActivity() {
         if (mNavigator != null) {
-            mNavigator.openOrderPayingActivity();
+            // TODO: need to find a better way of passing data between activities
+            mNavigator.openOrderPayingActivity(formOrder());
         }
+    }
+
+    private HashMap<MenuItemMainInfo, Integer> formOrder() {
+        HashMap<MenuItemMainInfo, Integer> selectedItems = new HashMap<>();
+
+        for (MenuPageFragment fragment : menuPageFragments) {
+            MenuPageViewModel pageViewModel = fragment.getViewModel();
+
+            if (pageViewModel.getViewModels() != null) {
+                for (MenuItemViewModel item : pageViewModel.getViewModels()) {
+                    if (item.mQuantity.get() > 0) {
+                        selectedItems.put(item.mMenuItem.get(), item.mQuantity.get());
+                    }
+                }
+            }
+        }
+        return  selectedItems;
     }
 }

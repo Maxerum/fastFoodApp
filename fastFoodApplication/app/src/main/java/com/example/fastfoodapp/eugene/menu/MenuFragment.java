@@ -41,7 +41,6 @@ public class MenuFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mMenuViewModel.start();
     }
 
     @Nullable
@@ -58,6 +57,7 @@ public class MenuFragment extends Fragment {
         setupToolbar();
 
         setupViewPager();
+        mMenuViewModel.start();
     }
 
     @Override
@@ -93,7 +93,7 @@ public class MenuFragment extends Fragment {
         viewPager.setAdapter(viewPagerAdapter);
     }
 
-    public static class ViewPagerAdapter extends FragmentStateAdapter {
+    public class ViewPagerAdapter extends FragmentStateAdapter {
 
         private ArrayList<Fragment> fragments;
 

@@ -9,8 +9,8 @@
     <string name="fab_description">Go to cart</string>
     <string name="no_data_error_message">No data</string>
 
-    <string name="log_in_action">Log In</string>
-    <string name="sign_up_action">Sign Up</string>
+    <string name="log_in_phone_action">Log In with phone</string>
+    <string name="log_in_email_action">Log In with email</string>
     <string name="user_id_text">User ID:</string>
     <string name="user_phone_number_text">Phone Number:</string>
 

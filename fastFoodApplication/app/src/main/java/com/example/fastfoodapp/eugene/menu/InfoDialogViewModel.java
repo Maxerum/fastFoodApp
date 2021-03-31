@@ -1,5 +1,6 @@
 package com.example.fastfoodapp.eugene.menu;
 
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
@@ -53,5 +54,7 @@ public class InfoDialogViewModel {
     public static void setImage(ImageView view, String imageUri) {
         Glide.with(view.getContext()).load(imageUri).placeholder(R.drawable.burger_image)
                 .apply(new RequestOptions().centerCrop()).into(view);
+
+        Log.d("TAG", "setImage " + imageUri);
     }
 }

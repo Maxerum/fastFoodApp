@@ -43,4 +43,6 @@ public interface MenuItemsDataSource {
     void getMenuCategories(LoadMenuCategoriesCallback callback);
 
     void deleteAllCategories();
+
+    void prepopulateDatabaseIfNeeded();
 }
