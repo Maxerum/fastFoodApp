@@ -11,61 +11,70 @@
         android:id="@+id/include"
         layout="@layout/dim4es_toolbar_for_credit_card" />
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relativeLayoutForCardName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="115dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Название"
-            android:textSize="22dp"
-            android:textColor="@color/black"/>
-        <EditText
-            android:id="@+id/cardNameEditText"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintVertical_bias="0.208">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/credit_card_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Карта 3"
-            android:textColor="@color/black"/>
-    </LinearLayout>
+            app:hintTextColor="@color/purple_700"
+            android:textColorHint="@color/black"
+            app:hintTextAppearance="@style/TextLabel"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/ErrorText"
+            >
+            <EditText
+                android:id="@+id/cardNameEditText"
+                android:maxLength="19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Название карты"
+                android:textSize="28dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="175dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/include">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/topLayout"
+            android:id="@+id/credit_card_number_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/black"
             app:hintTextColor="@color/purple_700"
-            >
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/ErrorText"
+            app:hintTextAppearance="@style/TextLabel">
             <EditText
                 android:id="@+id/cardNumberEditText"
-                android:inputType="number"
-                android:maxLength="19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Номер карты"
-                android:textColor="@color/white"
+                android:inputType="number"
+                android:maxLength="19"
                 android:textSize="22dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
+            android:id="@+id/choose_date_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/topLayout"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_below="@+id/credit_card_number_input"
+            >
             <EditText
                 android:id="@+id/cardValidDate"
                 android:focusable="false"
@@ -76,7 +85,7 @@
                 android:layout_weight="1"
                 android:text="Срок Действия"
                 android:textSize="22dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 />
 
             <ImageView
@@ -88,6 +97,16 @@
                 android:layout_weight="5"
                 android:src="@drawable/dim4es_ic_baseline_calendar_today_24" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/errorTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/choose_date_layout"
+            android:text=""
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/red"
+            />
     </RelativeLayout>
 
     <Button
@@ -97,7 +116,7 @@
         android:background="@drawable/dim4es_button_shape_blue"
         android:text="Готово"
         android:textSize="22dp"
-
+        android:onClick="confirmInput"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
