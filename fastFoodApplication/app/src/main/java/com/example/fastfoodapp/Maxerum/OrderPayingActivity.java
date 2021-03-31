@@ -10,15 +10,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.fastfoodapp.Dim4es.PayPage.PayMainActivity;
 import com.example.fastfoodapp.R;
+import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class OrderPayingActivity extends AppCompatActivity {
 
@@ -42,6 +45,11 @@ public class OrderPayingActivity extends AppCompatActivity {
         // чтобы исправил!!
         //НЕ ТВОЕ ДЕЛО ЧОРТ
 
+
+        // Это я добавил (Женя)
+        Bundle args = getIntent().getExtras();
+        HashMap<MenuItemMainInfo, Integer> selectedItems = (HashMap<MenuItemMainInfo, Integer>)
+                args.getSerializable("selected items");
     }
 
     public void removeItem(int position) {

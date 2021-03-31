@@ -23,6 +23,8 @@ public class MenuPageViewModel {
 
     public final ObservableArrayList<MenuItemMainInfo> mItems = new ObservableArrayList<>();
 
+    private ArrayList<MenuItemViewModel> mMenuItemViewModels;
+
     public MenuPageViewModel(MenuItemsLocalDataSource dataSource) {
         mDataSource = dataSource;
     }
@@ -50,11 +52,20 @@ public class MenuPageViewModel {
         });
     }
 
+    public void setViewModels(ArrayList<MenuItemViewModel> viewModels) {
+        mMenuItemViewModels = viewModels;
+        Log.d(TAG, "Number: " + viewModels.size());
+    }
+
+    public ArrayList<MenuItemViewModel> getViewModels() {
+        return mMenuItemViewModels;
+    }
+
     @BindingAdapter("app:items")
     public static void setItems(RecyclerView recyclerView, ArrayList<MenuItemMainInfo> items) {
         MenuPageFragment.MenuItemsAdapter adapter = (MenuPageFragment.MenuItemsAdapter) recyclerView.getAdapter();
         if (adapter != null) {
-            adapter.replaceData(items);
+            adapter.replaceData(items, null);
         }
     }
 }

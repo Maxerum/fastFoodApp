@@ -1,6 +1,10 @@
 package com.example.fastfoodapp.eugene.menu;
 
+import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
+
+import java.util.HashMap;
+
 public interface ShoppingCartNavigator {
 
-    void openOrderPayingActivity(/*order info for Maxerum's activity*/);
+    void openOrderPayingActivity(HashMap<MenuItemMainInfo, Integer> selectedItems);
 }

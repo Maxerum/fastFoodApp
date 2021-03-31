@@ -2,7 +2,9 @@ package com.example.fastfoodapp.eugene.data.item;
 
 import androidx.room.ColumnInfo;
 
-public class MenuItemMainInfo {
+import java.io.Serializable;
+
+public class MenuItemMainInfo implements Serializable {
     // TODO: access fields through getters and setters
     public String title;
     public String price;

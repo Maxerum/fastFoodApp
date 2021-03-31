@@ -12,7 +12,10 @@ import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
+import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
+
+import java.util.HashMap;
 
 
 public class MenuActivity extends AppCompatActivity implements ShoppingCartNavigator {
@@ -62,8 +65,13 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
     }
 
     @Override
-    public void openOrderPayingActivity() {
+    public void openOrderPayingActivity(HashMap<MenuItemMainInfo, Integer> selectedItems) {
         Intent intent = new Intent(this, OrderPayingActivity.class);
+
+        Bundle args = new Bundle();
+        args.putSerializable("selected items", selectedItems);
+        intent.putExtras(args);
+
         startActivity(intent);
     }
 }

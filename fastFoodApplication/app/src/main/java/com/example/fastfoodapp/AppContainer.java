@@ -1,6 +1,10 @@
 package com.example.fastfoodapp;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+
+import androidx.core.os.HandlerCompat;
 
 import com.example.fastfoodapp.eugene.data.MenuItemsDatabase;
 import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
@@ -19,6 +23,8 @@ public class AppContainer {
     }
 
     public final ExecutorService executorService = Executors.newFixedThreadPool(4);
+
+    public final Handler mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper());
 
     public final MenuItemsLocalDataSource dataSource;
 }
