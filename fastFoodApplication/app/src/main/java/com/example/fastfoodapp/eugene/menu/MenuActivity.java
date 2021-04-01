@@ -2,7 +2,6 @@ package com.example.fastfoodapp.eugene.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,13 +11,15 @@ import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
+import com.example.fastfoodapp.eugene.userprofile.UserProfileActivity;
 import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
 
 import java.util.HashMap;
 
 
-public class MenuActivity extends AppCompatActivity implements ShoppingCartNavigator {
+public class MenuActivity extends AppCompatActivity implements ShoppingCartNavigator,
+        UserProfileNavigator{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +73,12 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
         args.putSerializable("selected items", selectedItems);
         intent.putExtras(args);
 
+        startActivity(intent);
+    }
+
+    @Override
+    public void openUserProfileActivity() {
+        Intent intent = new Intent(this, UserProfileActivity.class);
         startActivity(intent);
     }
 }

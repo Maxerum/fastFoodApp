@@ -44,12 +44,20 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="FastFoodApp.TextAppearance.Huge.Dark" parent="TextAppearance.AppCompat.Headline">
+    <style name="FastFoodApp.TextAppearance.Huge.Dark">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/huge_text_size</item>
     </style>
 
     <style name="FastFoodApp.TextAppearance.Huge.Dark.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Huge" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textColor">@color/fastfoodapp_gray</item>
+        <item name="android:textSize">@dimen/huge_text_size</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Huge.Bold">
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -62,12 +70,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="FastFoodApp.TextAppearance.Small.Dark" parent="TextAppearance.AppCompat.Headline">
+    <style name="FastFoodApp.TextAppearance.Small.Light" parent="TextAppearance.AppCompat.Headline">
         <item name="android:textColor">@color/fastfoodapp_gray</item>
         <item name="android:textSize">@dimen/small_text_size</item>
     </style>
 
-    <style name="FastFoodApp.TextAppearance.Small.Dark.Bold">
+    <style name="FastFoodApp.TextAppearance.Small.Light.Bold">
         <item name="android:textStyle">bold</item>
     </style>
 

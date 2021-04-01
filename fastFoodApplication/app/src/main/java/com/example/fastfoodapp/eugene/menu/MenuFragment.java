@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -71,6 +70,9 @@ public class MenuFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.menu_account:
                 // TODO go to account info page
+                if (getActivity() != null) {
+                    ((UserProfileNavigator) getActivity()).openUserProfileActivity();
+                }
                 break;
         }
         return true;

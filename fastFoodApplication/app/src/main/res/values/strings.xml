@@ -5,14 +5,16 @@
     <string name="cancel">CANCEL</string>
 
     <string name="menu">Menu</string>
-    <string name="account">Account</string>
+    <string name="user_profile">User profile</string>
+    <string name="save">Save</string>
     <string name="fab_description">Go to cart</string>
     <string name="no_data_error_message">No data</string>
 
     <string name="log_in_phone_action">Log In with phone</string>
     <string name="log_in_email_action">Log In with email</string>
     <string name="user_id_text">User ID:</string>
-    <string name="user_phone_number_text">Phone Number:</string>
+    <string name="user_email_text">Email:</string>
+    <string name="user_password_text">Password:</string>
 
     <string name="placeholder_text">placeholder text</string>
     <string name="order_history">Order History</string>

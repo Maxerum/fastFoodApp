@@ -40,11 +40,8 @@
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
-        <activity android:name=".eugene.authorization.AuthorizationActivity"
-            android:theme="@style/Theme.FastFoodApp.NoActionBar">
-        </activity>
-
-        <activity android:name=".eugene.account.AccountActivity"
+        <activity android:name=".eugene.userprofile.UserProfileActivity"
+            android:parentActivityName=".eugene.menu.MenuActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
