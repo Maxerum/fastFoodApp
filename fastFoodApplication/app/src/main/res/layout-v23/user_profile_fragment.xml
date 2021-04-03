@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fastfoodapp.eugene.userprofile.UserProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/account_screen_button_height"
+            android:text="@string/manage_account"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/fastfoodapp_light_gray"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:foreground="@drawable/ripple_dark"
+            android:stateListAnimator="@null"
+            android:onClick="@{() -> viewModel.openEditUserProfile()}"/>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/fastfoodapp_gray" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/account_screen_button_height"
+            android:text="@string/order_history"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/fastfoodapp_light_gray"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:foreground="@drawable/ripple_dark"
+            android:stateListAnimator="@null"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/account_screen_button_height"
+            android:text="@string/log_out_action"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
+            android:backgroundTint="@color/fastfoodapp_red"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="0dp"
+            android:stateListAnimator="@null"
+            android:onClick="@{() -> viewModel.signOut()}"/>
+
+    </LinearLayout>
+
+</layout>

@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_account"
-        android:icon="@drawable/ic_user_account"
-        android:title="@string/user_profile"
+        android:id="@+id/user_profile_save"
+        android:title="@string/save"
         app:showAsAction="always" />
 
 </menu>

@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         startActivityForResult(auth.createSignInIntentBuilder()
                 .setAvailableProviders(idProviders).setTheme(R.style.Theme_FastFoodApp)
-                        .setAuthMethodPickerLayout(customLayout).build(), RC_SIGN_IN);
+                        .setAuthMethodPickerLayout(customLayout).setIsSmartLockEnabled(false).build(),
+                RC_SIGN_IN);
     }
 
     @Override
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response != null) {
                     Log.d(TAG, "Error code: " + response.getError().getErrorCode());
                 }
+                finish();
             }
         }
     }

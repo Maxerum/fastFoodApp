@@ -12,16 +12,19 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/account_toolbar"
+            android:id="@+id/user_profile_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="@string/account" />
+            app:title="@string/user_profile" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+    </FrameLayout>
 
 </LinearLayout>
+
+

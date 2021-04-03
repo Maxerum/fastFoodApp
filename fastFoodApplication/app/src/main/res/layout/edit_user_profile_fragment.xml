@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fastfoodapp.eugene.userprofile.EditUserProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp">
+
+            <TextView
+                android:id="@+id/user_id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_id_text"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
+                app:layout_constraintEnd_toStartOf="@id/user_id"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/user_id" />
+
+            <TextView
+                android:id="@+id/user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@{viewModel.mUid}"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/user_id_text"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/email_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/user_email_text"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
+                app:layout_constraintEnd_toStartOf="@id/user_email_input_layout"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/user_email_input_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/user_email_input_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/email_text"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Widget.Design.TextInputLayout"
+                app:errorEnabled="true"
+                app:boxBackgroundColor="@color/fastfoodapp_light_gray">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user_email"
+                    android:maxLines="1"
+                    style="@style/TextInputEditText.EmailField"
+                    android:text="@={viewModel.email}"
+                    android:enabled="@{viewModel.email.length() == 0 ? false : true}"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp">
+
+            <TextView
+                android:id="@+id/user_password_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/user_password_text"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
+                app:layout_constraintEnd_toStartOf="@id/user_password_input_layout"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/user_password_input_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/user_password_input_layout"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/user_password_text"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Widget.Design.TextInputLayout"
+                app:errorEnabled="true"
+                app:boxBackgroundColor="@color/fastfoodapp_light_gray"
+                android:hint="@string/enter_password_hint"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user_password"
+                    style="@style/TextInputEditText.PasswordField"
+                    android:maxLines="1"
+                    android:text="@={viewModel.password}"
+                    android:enabled="@{viewModel.email.length() == 0 ? false : true}"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</layout>
