@@ -14,6 +14,8 @@ import com.example.fastfoodapp.eugene.ViewModelHolder;
 import com.example.fastfoodapp.eugene.userprofile.UserProfileActivity;
 import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 
@@ -67,18 +69,28 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
 
     @Override
     public void openOrderPayingActivity(HashMap<MenuItemMainInfo, Integer> selectedItems) {
-        Intent intent = new Intent(this, OrderPayingActivity.class);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent intent = new Intent(this, OrderPayingActivity.class);
 
-        Bundle args = new Bundle();
-        args.putSerializable("selected items", selectedItems);
-        intent.putExtras(args);
+            Bundle args = new Bundle();
+            args.putSerializable("selected items", selectedItems);
+            intent.putExtras(args);
 
-        startActivity(intent);
+            startActivity(intent);
+        } else {
+            Snackbar.make(findViewById(android.R.id.content), "You have signed out",
+                    Snackbar.LENGTH_LONG).show();
+        }
     }
 
     @Override
     public void openUserProfileActivity() {
-        Intent intent = new Intent(this, UserProfileActivity.class);
-        startActivity(intent);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent intent = new Intent(this, UserProfileActivity.class);
+            startActivity(intent);
+        } else {
+            Snackbar.make(findViewById(android.R.id.content), "You have signed out",
+                    Snackbar.LENGTH_LONG).show();
+        }
     }
 }

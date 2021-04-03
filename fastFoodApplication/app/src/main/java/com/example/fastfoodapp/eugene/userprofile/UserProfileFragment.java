@@ -13,10 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.Observable;
 import androidx.fragment.app.Fragment;
 
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.databinding.UserProfileFragmentBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class UserProfileFragment extends Fragment {
 
@@ -30,7 +32,23 @@ public class UserProfileFragment extends Fragment {
         return new UserProfileFragment();
     }
 
-    public UserProfileFragment() {
+    public UserProfileFragment() { }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mViewModel.start();
+    }
+
+    private void setupSnackBar() {
+        mViewModel.mSnackBarText.addOnPropertyChangedCallback(
+                new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                Snackbar.make(getView(), mViewModel.mSnackBarText.get(), Snackbar.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Nullable
@@ -40,6 +58,11 @@ public class UserProfileFragment extends Fragment {
         mUserProfileBinding.setViewModel(mViewModel);
 
         return mUserProfileBinding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        setupSnackBar();
     }
 
     public void setViewModel(UserProfileViewModel viewModel) {

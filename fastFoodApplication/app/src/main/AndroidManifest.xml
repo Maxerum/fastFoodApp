@@ -45,6 +45,11 @@
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
+        <activity android:name=".eugene.userprofile.EditUserProfileActivity"
+            android:parentActivityName=".eugene.userprofile.UserProfileActivity"
+            android:theme="@style/Theme.FastFoodApp.NoActionBar">
+        </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

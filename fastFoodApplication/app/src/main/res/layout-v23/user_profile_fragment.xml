@@ -13,108 +13,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="14dp">
-
-            <TextView
-                android:id="@+id/user_id_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="@string/user_id_text"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
-                app:layout_constraintEnd_toStartOf="@id/user_id"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/user_id" />
-
-            <TextView
-                android:id="@+id/user_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/placeholder_text"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Huge"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/user_id_text"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="10dp">
-
-            <TextView
-                android:id="@+id/phone_number_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/user_email_text"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
-                app:layout_constraintEnd_toStartOf="@id/user_email"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/user_email" />
-
-            <EditText
-                android:id="@+id/user_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/placeholder_text"
-                android:maxLines="1"
-                android:inputType="textEmailAddress"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/phone_number_text"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="10dp">
-
-            <TextView
-                android:id="@+id/user_password_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/user_password_text"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
-                app:layout_constraintEnd_toStartOf="@id/user_password"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/user_password" />
-
-            <EditText
-                android:id="@+id/user_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/placeholder_text"
-                android:maxLines="1"
-                android:inputType="textPassword"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/user_password_text"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="@dimen/account_screen_button_height"
+            android:text="@string/manage_account"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/fastfoodapp_light_gray"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:foreground="@drawable/ripple_dark"
+            android:stateListAnimator="@null"
+            android:onClick="@{() -> viewModel.openEditUserProfile()}"/>
 
         <View
             android:layout_height="1dp"
             android:layout_width="match_parent"
-            android:background="@color/fastfoodapp_gray"
-            android:layout_marginTop="20dp"/>
+            android:background="@color/fastfoodapp_gray" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
@@ -137,7 +52,8 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             app:cornerRadius="0dp"
-            android:stateListAnimator="@null"/>
+            android:stateListAnimator="@null"
+            android:onClick="@{() -> viewModel.signOut()}"/>
 
     </LinearLayout>
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.userprofile.UserProfileViewModel" />
+            type="com.example.fastfoodapp.eugene.userprofile.EditUserProfileViewModel" />
     </data>
 
     <LinearLayout
@@ -17,13 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="14dp">
+            android:layout_marginEnd="12dp">
 
             <TextView
                 android:id="@+id/user_id_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
                 android:text="@string/user_id_text"
                 android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
                 app:layout_constraintEnd_toStartOf="@id/user_id"
@@ -35,9 +34,9 @@
                 android:id="@+id/user_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="28dp"
                 android:text="@{viewModel.mUid}"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Huge"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/user_id_text"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -48,32 +47,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="16dp">
 
             <TextView
                 android:id="@+id/email_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="28dp"
                 android:text="@string/user_email_text"
                 android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
-                app:layout_constraintEnd_toStartOf="@id/user_email"
+                app:layout_constraintEnd_toStartOf="@id/user_email_input_layout"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/user_email" />
+                app:layout_constraintTop_toTopOf="@id/user_email_input_layout" />
 
-            <EditText
-                android:id="@+id/user_email"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/user_email_input_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@{viewModel.mEmail}"
-                android:maxLines="1"
-                android:inputType="textEmailAddress"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/email_text"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Widget.Design.TextInputLayout"
+                app:errorEnabled="true"
+                app:boxBackgroundColor="@color/fastfoodapp_light_gray">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user_email"
+                    android:maxLines="1"
+                    style="@style/TextInputEditText.EmailField"
+                    android:text="@={viewModel.email}"
+                    android:enabled="@{viewModel.email.length() == 0 ? false : true}"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,63 +88,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginEnd="12dp">
 
             <TextView
                 android:id="@+id/user_password_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/user_password_text"
                 android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
-                app:layout_constraintEnd_toStartOf="@id/user_password"
+                app:layout_constraintEnd_toStartOf="@id/user_password_input_layout"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/user_password" />
+                app:layout_constraintTop_toTopOf="@id/user_password_input_layout" />
 
-            <EditText
-                android:id="@+id/user_password"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/user_password_input_layout"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/placeholder_text"
-                android:maxLines="1"
-                android:inputType="textPassword"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/user_password_text"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Widget.Design.TextInputLayout"
+                app:errorEnabled="true"
+                app:boxBackgroundColor="@color/fastfoodapp_light_gray"
+                android:hint="@string/enter_password_hint"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user_password"
+                    style="@style/TextInputEditText.PasswordField"
+                    android:maxLines="1"
+                    android:text="@={viewModel.password}"
+                    android:enabled="@{viewModel.email.length() == 0 ? false : true}"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:layout_height="1dp"
-            android:layout_width="match_parent"
-            android:background="@color/fastfoodapp_gray"
-            android:layout_marginTop="20dp"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/account_screen_button_height"
-            android:text="@string/order_history"
-            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/fastfoodapp_light_gray"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:foreground="@drawable/ripple_dark"
-            android:stateListAnimator="@null"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/account_screen_button_height"
-            android:text="@string/log_out_action"
-            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
-            android:backgroundTint="@color/fastfoodapp_red"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            app:cornerRadius="0dp"
-            android:stateListAnimator="@null"/>
 
     </LinearLayout>
 
