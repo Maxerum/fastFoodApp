@@ -38,26 +38,26 @@ public class UserProfileViewModel {
     }
 
     public void start() {
-        // debug
-        mUsersDataSource.getAllRestaurants(restaurants -> {
-            for (Restaurant r : restaurants) {
-                Log.d(TAG, r.getName());
-            }
-        });
-
         saveUserIfNeeded();
     }
 
     private void saveUserIfNeeded() {
         FirebaseUserMetadata metadata = mUser.getMetadata();
 
-        mUsersDataSource.checkIfUserExists(mUser.getUid(), exists -> {
-            if (metadata != null && !exists) {
+        mUsersDataSource.checkIfUserExists(mUser.getUid(), new UsersAndRestaurantsDataSource.CheckIfUserExistsCallback() {
+            @Override
+            public void onUserChecked(boolean exists) {
+                if (metadata != null && !exists) {
 
-                // This is a new user, so we'll add it to the database
-                mUsersDataSource.addNewUser(mUser.getUid());
-            } else {
-                Log.d(TAG, "This user already exists");
+                    // This is a new user, so we'll add it to the database
+                    mUsersDataSource.addNewUser(mUser.getUid());
+                } else {
+                    Log.d(TAG, "This user already exists");
+                }
+            }
+
+            @Override
+            public void onDataNotAvailable() {
             }
         });
     }

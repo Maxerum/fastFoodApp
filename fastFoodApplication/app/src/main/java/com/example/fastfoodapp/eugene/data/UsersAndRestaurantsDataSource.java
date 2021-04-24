@@ -9,11 +9,22 @@ public interface UsersAndRestaurantsDataSource {
     interface CheckIfUserExistsCallback {
 
         void onUserChecked(boolean exists);
+
+        void onDataNotAvailable();
     }
 
     interface GetAllRestaurantsCallback {
 
         void onGetAllRestaurants(ArrayList<Restaurant> restaurants);
+
+        void onDataNotAvailable();
+    }
+
+    interface AddCardCallback {
+
+        void onSuccess();
+
+        void onFailure();
     }
 
     void addNewUser(String uid);
@@ -22,5 +33,5 @@ public interface UsersAndRestaurantsDataSource {
 
     void getAllRestaurants(GetAllRestaurantsCallback callback);
 
-    void addNewCard(String uid, CardInfo card, String cardName);
+    void addNewCard(String uid, CardInfo card, String cardName, AddCardCallback callback);
 }

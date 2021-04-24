@@ -88,13 +88,15 @@ public class UsersAndRestaurantsRemoteDataSource implements
     }
 
     @Override
-    public void addNewCard(String uid, CardInfo card, String cardName) {
+    public void addNewCard(String uid, CardInfo card, String cardName, AddCardCallback callback) {
         mFirestoreDb.collection(USERS_COLLECTION).document(uid)
                 .collection(PAYMENT_METHODS_COLLECTION).document(cardName).set(card)
-                .addOnSuccessListener(aVoid -> {
-                    Log.d(TAG, "Card successfully added");
-                }).addOnFailureListener(e -> {
-                    Log.d(TAG, "Failed to add a card");
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        callback.onSuccess();
+                    } else {
+                        callback.onFailure();
+                    }
                 });
     }
 }

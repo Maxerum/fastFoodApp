@@ -78,6 +78,11 @@ public class PayMainActivity extends AppCompatActivity {
                 //adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                 spinnerRestaurant.setAdapter(adapter);
             }
+
+            @Override
+            public void onDataNotAvailable() {
+
+            }
         });
 
         //select item on spinner

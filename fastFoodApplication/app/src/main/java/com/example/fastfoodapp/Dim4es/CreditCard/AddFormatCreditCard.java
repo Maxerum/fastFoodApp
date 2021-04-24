@@ -17,9 +17,14 @@ import android.widget.Toast;
 
 import com.example.fastfoodapp.Dim4es.PayPage.PayMainActivity;
 import com.example.fastfoodapp.Dim4es.Watchers.CreditCardWatcher;
+import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.data.CardInfo;
+import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsDataSource;
+import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -35,13 +40,14 @@ public class AddFormatCreditCard extends AppCompatActivity {
     TextView errorMessage;
     Button readyButton;
 
+    private UsersAndRestaurantsRemoteDataSource mDataSource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dim4es_activity_add_format_credit_card);
 
-
-
+        mDataSource = ((FastFoodApp) getApplication()).appContainer.usersDataSource;
 
         //define error Message TextView
         errorMessage = findViewById(R.id.errorTextView);
@@ -155,7 +161,7 @@ public class AddFormatCreditCard extends AppCompatActivity {
             return;
         }
 
-        // adding credit card info to the database (добавил Женя)
+        // adding credit card info to the remote database (добавил Женя)
         String cardName = Objects.requireNonNull(creditCardNameInput.getEditText()).getText().toString();
         String cardNumber = Objects.requireNonNull(creditCardNumberInput.getEditText()).getText().toString();
 
@@ -164,8 +170,21 @@ public class AddFormatCreditCard extends AppCompatActivity {
         expirationDate.put("year", Integer.parseInt(year));
 
         CardInfo card = new CardInfo(cardNumber, expirationDate);
-
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            mDataSource.addNewCard(user.getUid(), card, cardName, new UsersAndRestaurantsDataSource.AddCardCallback() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(getApplicationContext(), "Card added",
+                            Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onFailure() {
+                    Toast.makeText(getApplicationContext(), "Fail to add a card",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         String input = "Name:" + creditCardNameInput.getEditText().getText().toString();
 
