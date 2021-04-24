@@ -18,9 +18,15 @@ import android.widget.Toast;
 import com.example.fastfoodapp.Dim4es.PayPage.PayMainActivity;
 import com.example.fastfoodapp.Dim4es.Watchers.CreditCardWatcher;
 import com.example.fastfoodapp.R;
+import com.example.fastfoodapp.eugene.data.CardInfo;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.HashMap;
+import java.util.Objects;
+
 public class AddFormatCreditCard extends AppCompatActivity {
+    private static final String TAG = "AddFormatCreditCard";
+
     ImageView arrowBackOnCreditCard, calendarIcon;
     Dialog validCreditCardDialog;
     String month, year;
@@ -148,6 +154,19 @@ public class AddFormatCreditCard extends AppCompatActivity {
         if(!validateCreditCardName() | !validateCreditCardNumber() | !validateDate()){
             return;
         }
+
+        // adding credit card info to the database (добавил Женя)
+        String cardName = Objects.requireNonNull(creditCardNameInput.getEditText()).getText().toString();
+        String cardNumber = Objects.requireNonNull(creditCardNumberInput.getEditText()).getText().toString();
+
+        HashMap<String, Integer> expirationDate = new HashMap<>();
+        expirationDate.put("month", Integer.parseInt(month));
+        expirationDate.put("year", Integer.parseInt(year));
+
+        CardInfo card = new CardInfo(cardNumber, expirationDate);
+
+
+
         String input = "Name:" + creditCardNameInput.getEditText().getText().toString();
 
 //        Intent intent = new Intent(AddFormatCreditCard.this, PayMainActivity.class);
@@ -159,7 +178,7 @@ public class AddFormatCreditCard extends AppCompatActivity {
         //Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
     }
 
-    private boolean validateCreditCardName(){
+    private boolean validateCreditCardName() {
         String nameInput = creditCardNameInput.getEditText().getText().toString();
 
         if(nameInput.isEmpty()){

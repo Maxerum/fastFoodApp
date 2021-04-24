@@ -2,22 +2,17 @@ package com.example.fastfoodapp.eugene.userprofile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 
 import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
-import com.example.fastfoodapp.eugene.data.UsersRemoteDataSource;
+import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -68,7 +63,7 @@ public class UserProfileActivity extends AppCompatActivity implements EditUserPr
         if (holder != null) {
             return holder.getViewModel();
         } else {
-            UsersRemoteDataSource dataSource = ((FastFoodApp) getApplication())
+            UsersAndRestaurantsRemoteDataSource dataSource = ((FastFoodApp) getApplication())
                     .appContainer.usersDataSource;
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             UserProfileViewModel viewModel = new UserProfileViewModel(dataSource, user);

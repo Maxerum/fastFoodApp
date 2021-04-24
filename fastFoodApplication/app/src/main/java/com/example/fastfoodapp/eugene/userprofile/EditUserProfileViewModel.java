@@ -1,7 +1,5 @@
 package com.example.fastfoodapp.eugene.userprofile;
 
-import android.util.Log;
-
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
@@ -16,7 +14,7 @@ public class EditUserProfileViewModel extends BaseObservable {
 
     private final ObservableField<String> mPassword = new ObservableField<>("");
 
-    public final ObservableField<String> mSnackBarText = new ObservableField<>();
+    public final ObservableField<String> mToastText = new ObservableField<>();
 
     private final String emailBeforeChange;
 
@@ -60,11 +58,11 @@ public class EditUserProfileViewModel extends BaseObservable {
                 newEmail = mEmail.get();
             }
             if (mPassword.get().length() == 0 && emailBeforeChange.equals(mEmail.get())) {
-                mSnackBarText.set("");
-                mSnackBarText.set("You didn't change anything");
+                mToastText.set("");
+                mToastText.set("You didn't change anything");
             } else if (mPassword.get().length() < 6) {
-                mSnackBarText.set("");
-                mSnackBarText.set("Incorrect password");
+                mToastText.set("");
+                mToastText.set("Incorrect password");
             }
 
             if (mNavigator != null && (newEmail != null || newPassword != null)) {

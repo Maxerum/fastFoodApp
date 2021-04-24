@@ -1,18 +1,15 @@
 package com.example.fastfoodapp.eugene.userprofile;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.Observable;
 import androidx.fragment.app.Fragment;
 
@@ -21,8 +18,6 @@ import com.example.fastfoodapp.databinding.EditUserProfileFragmentBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.Objects;
 
 public class EditUserProfileFragment extends Fragment {
 
@@ -59,12 +54,15 @@ public class EditUserProfileFragment extends Fragment {
     }
 
     private void setupSnackBar() {
-        mEditUserProfileViewModel.mSnackBarText.addOnPropertyChangedCallback(
+        mEditUserProfileViewModel.mToastText.addOnPropertyChangedCallback(
                 new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
-                Snackbar.make(getView(), mEditUserProfileViewModel.mSnackBarText.get(),
-                        Snackbar.LENGTH_LONG).show();
+                String newText = mEditUserProfileViewModel.mToastText.get();
+                if (newText != null && !newText.isEmpty()) {
+                    Toast.makeText(getContext(), mEditUserProfileViewModel.mToastText.get(),
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

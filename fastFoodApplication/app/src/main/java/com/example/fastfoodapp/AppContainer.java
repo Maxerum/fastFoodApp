@@ -8,7 +8,7 @@ import androidx.core.os.HandlerCompat;
 
 import com.example.fastfoodapp.eugene.data.MenuItemsDatabase;
 import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
-import com.example.fastfoodapp.eugene.data.UsersRemoteDataSource;
+import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.ExecutorService;
@@ -26,7 +26,7 @@ public class AppContainer {
 
         dataSource = MenuItemsLocalDataSource.newInstance(executorService, database.menuItemsDao(),
                 database.menuCategoryDao());
-        usersDataSource = new UsersRemoteDataSource(firestoreDb);
+        usersDataSource = new UsersAndRestaurantsRemoteDataSource(firestoreDb);
     }
 
     public final ExecutorService executorService = Executors.newFixedThreadPool(4);
@@ -35,5 +35,5 @@ public class AppContainer {
 
     public final MenuItemsLocalDataSource dataSource;
 
-    public final UsersRemoteDataSource usersDataSource;
+    public final UsersAndRestaurantsRemoteDataSource usersDataSource;
 }

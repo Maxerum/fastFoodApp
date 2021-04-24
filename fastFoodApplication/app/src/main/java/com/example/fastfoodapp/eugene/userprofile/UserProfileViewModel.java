@@ -5,10 +5,14 @@ import android.util.Log;
 
 import androidx.databinding.ObservableField;
 
-import com.example.fastfoodapp.eugene.data.UsersRemoteDataSource;
-import com.firebase.ui.auth.AuthUI;
+import com.example.fastfoodapp.eugene.data.Restaurant;
+import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsDataSource;
+import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserProfileViewModel {
     public static final String TAG = "UserProfileViewModel";
@@ -19,14 +23,14 @@ public class UserProfileViewModel {
 
     public final ObservableField<String> mSnackBarText = new ObservableField<>();
 
-    private final UsersRemoteDataSource mUsersDataSource;
+    private final UsersAndRestaurantsRemoteDataSource mUsersDataSource;
 
     private final FirebaseUser mUser;
 
     private EditUserProfileNavigator mNavigator;
 
-    public UserProfileViewModel(UsersRemoteDataSource usersRemoteDataSource, FirebaseUser user) {
-        mUsersDataSource = usersRemoteDataSource;
+    public UserProfileViewModel(UsersAndRestaurantsRemoteDataSource usersAndRestaurantsRemoteDataSource, FirebaseUser user) {
+        mUsersDataSource = usersAndRestaurantsRemoteDataSource;
         mUser = user;
 
         mUid.set(mUser.getUid());
@@ -34,6 +38,13 @@ public class UserProfileViewModel {
     }
 
     public void start() {
+        // debug
+        mUsersDataSource.getAllRestaurants(restaurants -> {
+            for (Restaurant r : restaurants) {
+                Log.d(TAG, r.getName());
+            }
+        });
+
         saveUserIfNeeded();
     }
 
@@ -41,11 +52,12 @@ public class UserProfileViewModel {
         FirebaseUserMetadata metadata = mUser.getMetadata();
 
         mUsersDataSource.checkIfUserExists(mUser.getUid(), exists -> {
-            if (metadata != null && metadata.getCreationTimestamp() ==
-                    metadata.getLastSignInTimestamp() && !exists) {
+            if (metadata != null && !exists) {
 
                 // This is a new user, so we'll add it to the database
                 mUsersDataSource.addNewUser(mUser.getUid());
+            } else {
+                Log.d(TAG, "This user already exists");
             }
         });
     }

@@ -18,12 +18,21 @@ import android.widget.Toast;
 
 import com.example.fastfoodapp.Dim4es.CreditCard.AddFormatCreditCard;
 import com.example.fastfoodapp.Dim4es.SuccessPay.SuccessPayPage;
+import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
 import com.example.fastfoodapp.R;
+import com.example.fastfoodapp.eugene.data.Restaurant;
+import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsDataSource;
+import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
+
+import java.util.ArrayList;
+
 public class PayMainActivity extends AppCompatActivity {
     ImageView arrowBackPayPage;
     TextView textViewToChooseSpinner;
     Spinner spinnerRestaurant;
+
+    private UsersAndRestaurantsRemoteDataSource mDataSource;
 
     //Buttons
     Button userCreditCard, addUserCard, finalSendButton;
@@ -51,11 +60,25 @@ public class PayMainActivity extends AppCompatActivity {
         //define spinner
         spinnerRestaurant = findViewById(R.id.restaurantSpinner);
         //spinner contains TextView (to choose)
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, restaurants);
-        //adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerRestaurant.setAdapter(adapter);
 
 
+        mDataSource = ((FastFoodApp) getApplication()).appContainer.usersDataSource;
+
+        // fetching all available restaurants
+        mDataSource.getAllRestaurants(new UsersAndRestaurantsDataSource.GetAllRestaurantsCallback() {
+            @Override
+            public void onGetAllRestaurants(ArrayList<Restaurant> restaurants) {
+                String[] restaurantsArr = new String[restaurants.size()];
+                for (int i = 0; i < restaurants.size(); i++) {
+                    restaurantsArr[i] = restaurants.get(i).getName();
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
+                        R.layout.support_simple_spinner_dropdown_item, restaurantsArr);
+                //adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                spinnerRestaurant.setAdapter(adapter);
+            }
+        });
 
         //select item on spinner
         spinnerRestaurant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
