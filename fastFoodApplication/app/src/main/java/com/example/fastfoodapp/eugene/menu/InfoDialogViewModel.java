@@ -12,6 +12,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.data.item.MenuItem;
 
+import java.util.Objects;
+
 
 public class InfoDialogViewModel {
 
@@ -35,12 +37,12 @@ public class InfoDialogViewModel {
         mMenuItem.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
-                mTitle.set(mMenuItem.get().getTitle());
-                mImageUri.set(mMenuItem.get().getImageUri());
-                mCalories.set(mMenuItem.get().getCalories());
-                mTotalFat.set(mMenuItem.get().getTotalFat());
-                mTotalCarbs.set(mMenuItem.get().getTotalCarbs());
-                mProtein.set(mMenuItem.get().getProtein());
+                mTitle.set(Objects.requireNonNull(mMenuItem.get()).getTitle());
+                mImageUri.set(Objects.requireNonNull(mMenuItem.get()).getImageUri());
+                mCalories.set(Objects.requireNonNull(mMenuItem.get()).getCalories());
+                mTotalFat.set(Objects.requireNonNull(mMenuItem.get()).getTotalFat());
+                mTotalCarbs.set(Objects.requireNonNull(mMenuItem.get()).getTotalCarbs());
+                mProtein.set(Objects.requireNonNull(mMenuItem.get()).getProtein());
                 mIngredients.set("*Some ingredients*");
             }
         });

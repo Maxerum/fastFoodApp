@@ -129,7 +129,6 @@ public class MenuPageFragment extends Fragment {
             if (menuItem != null && mViewModels != null && position < mViewModels.size()) {
                 holder.bindData(mViewModels.get(position));
             }
-
         }
 
         @Override

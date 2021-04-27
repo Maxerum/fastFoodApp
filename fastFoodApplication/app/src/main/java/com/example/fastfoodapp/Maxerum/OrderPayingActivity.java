@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.fastfoodapp.Dim4es.PayPage.PayMainActivity;
+import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 
@@ -41,9 +43,12 @@ public class OrderPayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_paying);
         System.out.println("ЗДАРОВА");
-        Bundle args = getIntent().getExtras();
-        selectedItems = (HashMap<MenuItemMainInfo, Integer>)
-                args.getSerializable("selected items");
+//        Bundle args = getIntent().getExtras();
+//        selectedItems = (HashMap<MenuItemMainInfo, Integer>)
+//                args.getSerializable("selected items");
+
+        selectedItems = ((FastFoodApp) getApplication()).appContainer.selectedItems;
+
         System.out.println("ЗДАРОВА");
         createExampleList(selectedItems);
         System.out.println("ЗДАРОВА");
@@ -60,8 +65,20 @@ public class OrderPayingActivity extends AppCompatActivity {
 
     public void removeItem(int position) {
         System.out.println("REMOVER item");
-        selectedItems.remove(position);
+
+        int i = 0;
+        MenuItemMainInfo bufferedItem = null;
+        for (MenuItemMainInfo menuItem : selectedItems.keySet()) {
+            if (position == i) {
+                bufferedItem = menuItem;
+                break;
+            }
+            i++;
+        }
+        selectedItems.remove(bufferedItem);
         exampleList.remove(position);
+
+        setPriceText(recalculateTotalPrice());
         mAdapter.notifyItemRemoved(position);
     }
 
@@ -121,6 +138,28 @@ public class OrderPayingActivity extends AppCompatActivity {
 //        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
 //        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
 //        exampleList.add(new ExampleItem(R.drawable.first_burger, "BURGER","5$"));
+    }
+
+    private float recalculateTotalPrice() {
+        float totalPrice = 0;
+        for (MenuItemMainInfo menuItem : selectedItems.keySet()) {
+            String number = menuItem.price.substring(0, menuItem.price.length() - 2);
+            float itemPrice = Float.parseFloat(number) * selectedItems.get(menuItem);
+            totalPrice += itemPrice;
+        }
+        return totalPrice;
+    }
+
+    private void setPriceText(float price) {
+        @SuppressLint("DefaultLocale") String priceStr = String.format("%.2f", price);
+        String totalPrice = "TOTAL: " + priceStr + "$";
+        textView3.setText(totalPrice);
+    }
+
+    private void printSelectedItems() {
+        for (MenuItemMainInfo menuItem : selectedItems.keySet()) {
+            Log.d("TAG", menuItem.title);
+        }
     }
 
 }

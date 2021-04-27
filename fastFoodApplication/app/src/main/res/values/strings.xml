@@ -19,6 +19,8 @@
     <string name="enter_password_hint">Enter new password</string>
     <string name="pasword_input_error">Password must be at least 6 characters long</string>
 
+    <string name="done_button">Done</string>
+
     <string name="placeholder_text">placeholder text</string>
     <string name="order_history">Order History</string>
     <string name="manage_account">Manage account</string>

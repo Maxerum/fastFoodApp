@@ -9,8 +9,10 @@ import androidx.core.os.HandlerCompat;
 import com.example.fastfoodapp.eugene.data.MenuItemsDatabase;
 import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
 import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
+import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -36,4 +38,6 @@ public class AppContainer {
     public final MenuItemsLocalDataSource dataSource;
 
     public final UsersAndRestaurantsRemoteDataSource usersDataSource;
+
+    public HashMap<MenuItemMainInfo, Integer> selectedItems;
 }

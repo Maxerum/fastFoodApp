@@ -70,11 +70,13 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
     @Override
     public void openOrderPayingActivity(HashMap<MenuItemMainInfo, Integer> selectedItems) {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            ((FastFoodApp) getApplication()).appContainer.selectedItems = selectedItems;
+
             Intent intent = new Intent(this, OrderPayingActivity.class);
 
-            Bundle args = new Bundle();
-            args.putSerializable("selected items", selectedItems);
-            intent.putExtras(args);
+//            Bundle args = new Bundle();
+//            args.putSerializable("selected items", selectedItems);
+//            intent.putExtras(args);
 
             startActivity(intent);
         } else {
