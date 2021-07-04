@@ -54,7 +54,6 @@ public class MenuPageViewModel {
 
     public void setViewModels(ArrayList<MenuItemViewModel> viewModels) {
         mMenuItemViewModels = viewModels;
-        Log.d(TAG, "Number: " + viewModels.size());
     }
 
     public ArrayList<MenuItemViewModel> getViewModels() {

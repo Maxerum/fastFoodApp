@@ -1,4 +1,4 @@
-package com.example.fastfoodapp.eugene.userprofile;
+package com.example.fastfoodapp.eugene.userprofile.editprofile;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.databinding.EditUserProfileFragmentBinding;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 

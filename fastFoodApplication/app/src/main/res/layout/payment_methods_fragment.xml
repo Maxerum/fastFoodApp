@@ -31,7 +31,8 @@
             android:background="@android:color/transparent"
             android:foreground="@drawable/ripple_dark"
             android:text="@string/done_button"
-            android:textColor="@android:color/black">
+            android:textColor="@android:color/black"
+            android:onClick="@{() -> viewModel.dismissDialog()}">
         </Button>
 
     </LinearLayout>

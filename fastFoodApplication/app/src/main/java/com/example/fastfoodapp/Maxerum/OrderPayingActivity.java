@@ -54,13 +54,6 @@ public class OrderPayingActivity extends AppCompatActivity {
         System.out.println("ЗДАРОВА");
         buildRecyclerView();
         setButtons();
-        // Maxim, что за button12 ???    щ(ಠ益ಠщ)
-        // чтобы исправил!!
-        //НЕ ТВОЕ ДЕЛО ЧОРТ
-
-
-        // Это я добавил (Женя)
-
     }
 
     public void removeItem(int position) {
@@ -78,7 +71,9 @@ public class OrderPayingActivity extends AppCompatActivity {
         selectedItems.remove(bufferedItem);
         exampleList.remove(position);
 
-        setPriceText(recalculateTotalPrice());
+        float newPrice = recalculateTotalPrice();
+        setPriceText(newPrice);
+        saveOrderTotal(newPrice);
         mAdapter.notifyItemRemoved(position);
     }
 
@@ -127,6 +122,7 @@ public class OrderPayingActivity extends AppCompatActivity {
             String mul = info.price.substring(0, info.price.length() - 2);
             bigSum += amount * Float.parseFloat(mul);
             bigSumString = String.format("%.2f", bigSum);
+            saveOrderTotal(bigSum);
             bigSumString2 = "TOTAL: " + bigSumString + "$";
 //            bigSum = String.format("%.2f",value);
 //            System.out.println(bigSum);
@@ -148,6 +144,11 @@ public class OrderPayingActivity extends AppCompatActivity {
             totalPrice += itemPrice;
         }
         return totalPrice;
+    }
+
+    private void saveOrderTotal(float orderTotal) {
+        @SuppressLint("DefaultLocale") String priceStr = String.format("%.2f", orderTotal) + " $";
+        ((FastFoodApp) getApplication()).appContainer.orderTotal = priceStr;
     }
 
     private void setPriceText(float price) {

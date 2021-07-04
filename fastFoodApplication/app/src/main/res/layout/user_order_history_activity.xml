@@ -12,10 +12,10 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/user_profile_toolbar"
+            android:id="@+id/user_order_history_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="@string/user_profile" />
+            app:title="@string/user_order_history" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -25,5 +25,3 @@
         android:layout_height="match_parent" />
 
 </LinearLayout>
-
-

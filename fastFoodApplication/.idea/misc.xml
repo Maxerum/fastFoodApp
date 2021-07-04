@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable-v24/item_divider.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/close_button.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ic_close_icon.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ic_minus_icon.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ic_plus_icon.xml" value="0.25" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ripple_light.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/yellow_circle.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout-v23/user_profile_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/auth_screen.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/dim4es_toolbar_for_pay_page.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/edit_user_profile_activity.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/edit_user_profile_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/example_item.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/menu_activity.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/menu_item.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/menu_item_info_dialog.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/menu_page_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_list_item.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_summary_activity.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_summary_fragment.xml" value="0.21829762594093804" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_summary_item.xml" value="0.49100968188105115" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/payment_methods_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/row.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/user_order_history_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/user_profile_activity.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/user_profile_fragment.xml" value="0.19635416666666666" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
     <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
@@ -25,7 +57,7 @@
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="13">
+        <list size="14">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
           <item index="2" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
@@ -39,6 +71,7 @@
           <item index="10" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
           <item index="11" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
           <item index="12" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="lombok.NonNull" />
         </list>
       </value>
     </option>

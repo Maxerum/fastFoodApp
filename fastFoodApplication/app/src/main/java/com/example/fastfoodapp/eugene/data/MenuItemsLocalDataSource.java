@@ -100,7 +100,7 @@ public class MenuItemsLocalDataSource implements MenuItemsDataSource {
     public void prepopulateDatabaseIfNeeded() {
         executor.execute(() -> {
             if (menuCategoriesDao.getAll().isEmpty()) {
-                prepopulateDatabase();
+//                prepopulateDatabase();
             } else {
 //                menuCategoriesDao.deleteAll();
 //                menuItemsDao.deleteAll();
@@ -109,6 +109,7 @@ public class MenuItemsLocalDataSource implements MenuItemsDataSource {
     }
 
     private void prepopulateDatabase() {
+
         ArrayList<MenuCategory> categories = new ArrayList<>();
         categories.add(new MenuCategory(MenuCategories.BURGERS.toString()));
         categories.add(new MenuCategory(MenuCategories.SNACKS_AND_SIDES.toString()));

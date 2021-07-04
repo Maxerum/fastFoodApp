@@ -6,8 +6,6 @@ import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fastfoodapp.eugene.data.CardInfo;
-import com.example.fastfoodapp.eugene.data.Restaurant;
 import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsDataSource;
 import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +25,8 @@ public class PaymentMethodsViewModel implements UncheckPaymentMethod {
 
     private final PaymentMethodsViewModel instance;
 
+    private DismissDialog dismissDialog;
+
     public PaymentMethodsViewModel(UsersAndRestaurantsRemoteDataSource dataSource) {
         mDataSource = dataSource;
         mViewModels = new ArrayList<>();
@@ -40,8 +40,7 @@ public class PaymentMethodsViewModel implements UncheckPaymentMethod {
     private void getPaymentMethodsNames() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        mDataSource.getUserPaymentMethodsNames(user.getUid(), new UsersAndRestaurantsDataSource
-                .GetUserPaymentMethodsNames() {
+        mDataSource.getUserPaymentMethodsNames(user.getUid(), new UsersAndRestaurantsDataSource.GetUserPaymentMethodsNamesCallback() {
             @Override
             public void onGetAllUserPaymentMethodsNames(ArrayList<String> paymentMethodsNames) {
                 if (mViewModels.isEmpty()) {
@@ -94,5 +93,15 @@ public class PaymentMethodsViewModel implements UncheckPaymentMethod {
     public static void setItems(RecyclerView recyclerView, ArrayList<String> items) {
         ((PaymentMethodsDialog.PaymentMethodsAdapter) recyclerView.getAdapter())
                 .replaceData(items);
+    }
+
+    public void dismissDialog() {
+        if (dismissDialog != null) {
+            dismissDialog.dismissDialog();
+        }
+    }
+
+    public void setDismissDialog(DismissDialog d) {
+        dismissDialog = d;
     }
 }

@@ -37,11 +37,6 @@ public class MenuFragment extends Fragment {
     public MenuFragment() {
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,7 +51,9 @@ public class MenuFragment extends Fragment {
         setupToolbar();
 
         setupViewPager();
-        mMenuViewModel.start();
+        if (mMenuViewModel != null) {
+            mMenuViewModel.start();
+        }
     }
 
     @Override
@@ -64,16 +61,12 @@ public class MenuFragment extends Fragment {
         inflater.inflate(R.menu.menu_options_menu, menu);
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_account:
-                // TODO go to account info page
-                if (getActivity() != null) {
-                    ((UserProfileNavigator) getActivity()).openUserProfileActivity();
-                }
-                break;
+        if (item.getItemId() == R.id.menu_account) {
+            if (getActivity() != null) {
+                ((UserProfileNavigator) getActivity()).openUserProfileActivity();
+            }
         }
         return true;
     }
@@ -95,7 +88,7 @@ public class MenuFragment extends Fragment {
         viewPager.setAdapter(viewPagerAdapter);
     }
 
-    public class ViewPagerAdapter extends FragmentStateAdapter {
+    public static class ViewPagerAdapter extends FragmentStateAdapter {
 
         private ArrayList<Fragment> fragments;
 
@@ -106,6 +99,7 @@ public class MenuFragment extends Fragment {
             this.fragments = fragments;
         }
 
+        @SuppressLint("NotifyDataSetChanged")
         public void replaceData(ArrayList<Fragment> fragments) {
             this.fragments = fragments;
             notifyDataSetChanged();

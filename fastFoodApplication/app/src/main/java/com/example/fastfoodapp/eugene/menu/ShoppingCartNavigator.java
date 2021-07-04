@@ -6,5 +6,5 @@ import java.util.HashMap;
 
 public interface ShoppingCartNavigator {
 
-    void openOrderPayingActivity(HashMap<MenuItemMainInfo, Integer> selectedItems);
+    void openOrderSummaryActivity(HashMap<MenuItemMainInfo, Integer> selectedItems);
 }

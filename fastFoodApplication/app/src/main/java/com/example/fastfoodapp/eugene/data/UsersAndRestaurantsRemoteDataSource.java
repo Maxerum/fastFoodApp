@@ -6,23 +6,18 @@ import androidx.annotation.NonNull;
 
 import com.example.fastfoodapp.eugene.data.order.Order;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.time.YearMonth;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -38,6 +33,8 @@ public class UsersAndRestaurantsRemoteDataSource implements
     private static final String PAYMENT_METHODS_COLLECTION = "payment methods";
 
     private static final String ORDERS_COLLECTION = "orders";
+
+    private static final String ORDERS_HISTORY_COLLECTION = "orders history";
 
     private final FirebaseFirestore mFirestoreDb;
 
@@ -101,7 +98,7 @@ public class UsersAndRestaurantsRemoteDataSource implements
     }
 
     @Override
-    public void getUserPaymentMethodsNames(String uid, GetUserPaymentMethodsNames callback) {
+    public void getUserPaymentMethodsNames(String uid, GetUserPaymentMethodsNamesCallback callback) {
         Query query = mFirestoreDb.collection(USERS_COLLECTION).document(uid)
                 .collection(PAYMENT_METHODS_COLLECTION).orderBy(FieldPath.documentId());
 
@@ -119,10 +116,84 @@ public class UsersAndRestaurantsRemoteDataSource implements
     }
 
     @Override
-    public void placeOrder(Order order, OrderPlaceCallback callback) {
+    public void placeOrder(Order order, String uid, OrderPlaceCallback callback) {
         mFirestoreDb.collection(ORDERS_COLLECTION).add(order).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                DocumentReference ref = task.getResult();
+                Map<String, Timestamp> orderTimestamp = new HashMap<>();
+                orderTimestamp.put("timestamp", order.getTimestamp());
+
+                mFirestoreDb.collection(USERS_COLLECTION).document(uid)
+                        .collection(ORDERS_HISTORY_COLLECTION).document(ref.getId())
+                        .set(orderTimestamp).addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()) {
+                                callback.onSuccess();
+                            } else {
+                                callback.onFailure();
+                            }
+                        });
+            } else {
+                callback.onFailure();
+            }
+        });
+    }
+
+    @Override
+    public void getAllUserOrderHistory(String uid, GetUserOrderHistoryCallback callback) {
+        Query query = mFirestoreDb.collection(USERS_COLLECTION).document(uid)
+                .collection(ORDERS_HISTORY_COLLECTION).orderBy("timestamp");
+
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                String[] orderIds = new String[task.getResult().size()];
+                int i = 0;
+                for (QueryDocumentSnapshot snap : task.getResult()) {
+                    orderIds[i] = snap.getId();
+                    i++;
+                }
+
+                if (orderIds.length > 0) {
+                    Query ordersQuery = mFirestoreDb.collection(ORDERS_COLLECTION)
+                            .whereIn(FieldPath.documentId(), Arrays.asList(orderIds));
+
+                    ordersQuery.get().addOnCompleteListener(task1 -> {
+                        if (task1.isSuccessful()) {
+                            ArrayList<Order> orders = new ArrayList<>();
+                            for (QueryDocumentSnapshot querySnap : task1.getResult()) {
+                                orders.add(querySnap.toObject(Order.class));
+                            }
+
+                            callback.onGetUserOrderHistory(orders);
+                        } else {
+                            callback.onDataNotAvailable();
+                        }
+                    });
+                }
+            } else {
+                callback.onDataNotAvailable();
+            }
+        });
+    }
+
+    @Override
+    public void clearAllUserOrderHistory(String uid, ClearUserOrderHistoryCallback callback) {
+        Query query = mFirestoreDb.collection(USERS_COLLECTION).document(uid)
+                .collection(ORDERS_HISTORY_COLLECTION);
+
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot snap : task.getResult()) {
+                    mFirestoreDb.collection(USERS_COLLECTION).document(uid)
+                            .collection(ORDERS_HISTORY_COLLECTION).document(snap.getId()).delete()
+                            .addOnCompleteListener(task1 -> {
+                                if (task1.isSuccessful()) {
+                                } else {
+
+                                }
+                            });
+                }
                 callback.onSuccess();
+
             } else {
                 callback.onFailure();
             }

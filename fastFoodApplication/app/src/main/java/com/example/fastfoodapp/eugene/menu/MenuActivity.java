@@ -11,7 +11,8 @@ import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.Maxerum.OrderPayingActivity;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
-import com.example.fastfoodapp.eugene.userprofile.UserProfileActivity;
+import com.example.fastfoodapp.eugene.ordersummary.OrderSummaryActivity;
+import com.example.fastfoodapp.eugene.userprofile.UserProfileInfoActivity;
 import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
 import com.google.android.material.snackbar.Snackbar;
@@ -32,6 +33,7 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
 
         MenuViewModel viewModel = findOrCreateViewModel();
         viewModel.setShoppingCartNavigator(this);
+
         fragment.setViewModel(viewModel);
     }
 
@@ -68,15 +70,11 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
     }
 
     @Override
-    public void openOrderPayingActivity(HashMap<MenuItemMainInfo, Integer> selectedItems) {
+    public void openOrderSummaryActivity(HashMap<MenuItemMainInfo, Integer> selectedItems) {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             ((FastFoodApp) getApplication()).appContainer.selectedItems = selectedItems;
 
-            Intent intent = new Intent(this, OrderPayingActivity.class);
-
-//            Bundle args = new Bundle();
-//            args.putSerializable("selected items", selectedItems);
-//            intent.putExtras(args);
+            Intent intent = new Intent(this, OrderSummaryActivity.class);
 
             startActivity(intent);
         } else {
@@ -88,7 +86,7 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
     @Override
     public void openUserProfileActivity() {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Intent intent = new Intent(this, UserProfileActivity.class);
+            Intent intent = new Intent(this, UserProfileInfoActivity.class);
             startActivity(intent);
         } else {
             Snackbar.make(findViewById(android.R.id.content), "You have signed out",

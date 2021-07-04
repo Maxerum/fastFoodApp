@@ -34,6 +34,48 @@
         <item name="android:textSize">@dimen/big_text_size</item>
     </style>
 
+    <style name="FastFoodApp.TextAppearance.Big.Dark">
+        <item name="android:textColor">@color/fastfoodapp_gray</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Big.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Big.Black.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Big.Green">
+        <item name="android:textColor">@color/fastfoodapp_green</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Big.Red">
+        <item name="android:textColor">@color/fastfoodapp_red</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.ItemQuantity" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/item_quantity_text_size</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.ItemQuantity.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Large" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Large.Dark">
+        <item name="android:textColor">@color/fastfoodapp_gray</item>
+    </style>
+
+    <style name="FastFoodApp.TextAppearance.Large.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="FastFoodApp.TextAppearance.Big.Bold">
         <item name="android:textStyle">bold</item>
     </style>
@@ -115,9 +157,4 @@
         <item name="android:inputType">textEmailAddress</item>
     </style>
 
-    <!--    <style name="RoundedCornerButton" parent="@style/Widget.AppCompat.Button.Colored">-->
-<!--        <item name="background">@drawable/custom_button</item>-->
-<!--        <item name="colorButtonNormal">#1a237e</item>-->
-<!--        <item name="colorControlHighlight">#673ab7</item>-->
-<!--    </style>-->
 </resources>

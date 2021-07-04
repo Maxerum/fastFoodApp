@@ -1,32 +1,19 @@
 package com.example.fastfoodapp.eugene.menu;
 
-import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
-import android.view.Menu;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuView;
-import androidx.databinding.BaseObservable;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
-import androidx.databinding.ObservableBoolean;
-import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.fastfoodapp.eugene.data.MenuItemsDataSource;
 import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
-import com.example.fastfoodapp.eugene.data.category.MenuCategories;
 import com.example.fastfoodapp.eugene.data.category.MenuCategory;
 import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +69,9 @@ public class MenuViewModel {
     public static void setAdapter(ViewPager2 viewPager, ObservableList<MenuPageFragment> fragments) {
         MenuFragment.ViewPagerAdapter pagerAdapter = (MenuFragment.ViewPagerAdapter) viewPager.getAdapter();
         if (pagerAdapter != null) {
-            pagerAdapter.replaceData(new ArrayList<>(fragments));
+            if (fragments != null) {
+                pagerAdapter.replaceData(new ArrayList<>(fragments));
+            }
         }
     }
 
@@ -102,7 +91,7 @@ public class MenuViewModel {
     public void openOrderPayingActivity() {
         if (mNavigator != null) {
             // TODO: need to find a better way of passing data between activities
-            mNavigator.openOrderPayingActivity(formOrder());
+            mNavigator.openOrderSummaryActivity(formOrder());
         }
     }
 

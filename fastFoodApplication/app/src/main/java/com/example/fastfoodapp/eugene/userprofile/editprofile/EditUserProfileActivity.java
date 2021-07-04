@@ -1,4 +1,4 @@
-package com.example.fastfoodapp.eugene.userprofile;
+package com.example.fastfoodapp.eugene.userprofile.editprofile;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
+import com.example.fastfoodapp.eugene.userprofile.UserProfileViewModel;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
 
 import java.util.Objects;
@@ -79,7 +80,7 @@ public class EditUserProfileActivity extends AppCompatActivity implements SaveUs
         Toolbar toolbar = findViewById(R.id.edit_user_profile_toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

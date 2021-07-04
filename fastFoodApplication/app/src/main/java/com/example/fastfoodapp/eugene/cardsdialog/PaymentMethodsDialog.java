@@ -21,7 +21,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class PaymentMethodsDialog extends BottomSheetDialogFragment {
+public class PaymentMethodsDialog extends BottomSheetDialogFragment implements DismissDialog {
 
     public static final String TAG = "PaymentMethodsDialog";
 
@@ -41,13 +41,12 @@ public class PaymentMethodsDialog extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         setupRecyclerView();
+        mViewModel.start();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-        mViewModel.start();
     }
 
     public void setViewModel(PaymentMethodsViewModel viewModel) {
@@ -103,9 +102,11 @@ public class PaymentMethodsDialog extends BottomSheetDialogFragment {
 
         @Override
         public void onBindViewHolder(@NonNull PaymentMethodHolder holder, int position) {
-            PaymentMethodViewModel viewModel = mViewModels.get(position);
+            if (position < mViewModels.size()) {
+                PaymentMethodViewModel viewModel = mViewModels.get(position);
 
-            holder.setViewModel(viewModel);
+                holder.setViewModel(viewModel);
+            }
         }
 
         @Override
@@ -127,5 +128,10 @@ public class PaymentMethodsDialog extends BottomSheetDialogFragment {
             mBinding.setViewModel(viewModel);
             mBinding.executePendingBindings();
         }
+    }
+
+    @Override
+    public void dismissDialog() {
+        dismiss();
     }
 }

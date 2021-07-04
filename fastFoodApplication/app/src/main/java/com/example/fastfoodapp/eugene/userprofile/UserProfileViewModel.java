@@ -5,14 +5,10 @@ import android.util.Log;
 
 import androidx.databinding.ObservableField;
 
-import com.example.fastfoodapp.eugene.data.Restaurant;
 import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsDataSource;
 import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserProfileViewModel {
     public static final String TAG = "UserProfileViewModel";
@@ -27,7 +23,7 @@ public class UserProfileViewModel {
 
     private final FirebaseUser mUser;
 
-    private EditUserProfileNavigator mNavigator;
+    private UserProfileInfoNavigator mNavigator;
 
     public UserProfileViewModel(UsersAndRestaurantsRemoteDataSource usersAndRestaurantsRemoteDataSource, FirebaseUser user) {
         mUsersDataSource = usersAndRestaurantsRemoteDataSource;
@@ -89,13 +85,19 @@ public class UserProfileViewModel {
         }
     }
 
+    public void openUserOrderHistory() {
+        if (mNavigator != null) {
+            mNavigator.openUserOrderHistory();
+        }
+    }
+
     public void signOut() {
         if (mNavigator != null) {
             mNavigator.signOut();
         }
     }
 
-    public void setNavigator(EditUserProfileNavigator navigator) {
+    public void setNavigator(UserProfileInfoNavigator navigator) {
         mNavigator = navigator;
     }
 }

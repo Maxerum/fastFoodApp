@@ -19,16 +19,19 @@ public class Order {
 
     private String restaurant;
 
+    private String orderTotal;
+
     public Order() {}
 
     public Order(String uid, String paymentMethodName,
-                 HashMap<String, Integer> orderItems, String restaurant) {
+                 HashMap<String, Integer> orderItems, String restaurant, String orderTotal) {
         this.uid = uid;
         this.paymentMethodName = paymentMethodName;
         this.timestamp = new Timestamp(new Date());
         this.orderItems = orderItems;
         status = OrderStatus.Cooking.toString();
         this.restaurant = restaurant;
+        this.orderTotal = orderTotal;
     }
 
     public String getUid() {
@@ -54,4 +57,6 @@ public class Order {
     public String getRestaurant() {
         return restaurant;
     }
+
+    public String getOrderTotal() { return orderTotal; }
 }

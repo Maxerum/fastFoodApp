@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fastfoodapp.eugene.userprofile.orderhistory.UserOrderHistoryViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/orders_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:items="@{viewModel.mOrders}"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/log_in_email_button"
+            app:cornerRadius="@dimen/button_rounded_corners_radius"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/welcome_screen_button_height"
+            android:layout_marginStart="@dimen/welcome_screen_side_margin"
+            android:layout_marginEnd="@dimen/welcome_screen_side_margin"
+            android:backgroundTint="@color/fastfoodapp_red"
+            android:text="@string/clear_order_history_action"
+            android:onClick="@{() -> viewModel.clearUserOrderHistory()}"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

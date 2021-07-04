@@ -1,16 +1,11 @@
 package com.example.fastfoodapp.eugene.menu;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,14 +20,15 @@ import com.example.fastfoodapp.databinding.MenuItemBinding;
 import com.example.fastfoodapp.databinding.MenuPageFragmentBinding;
 import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
 import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
-import com.example.fastfoodapp.eugene.util.SpacingItemDecoration;
+import com.example.fastfoodapp.eugene.decorator.SpacingItemDecoration;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MenuPageFragment extends Fragment {
     public static final String TAG = "MenuPageFragment";
 
-    private static final String QUANTITY_KEY = "quantity arg";
+    private static final String QUANTITY_KEY = "quantity_arg";
 
     private static final int SPAN_COUNT = 2;
 
@@ -57,9 +53,8 @@ public class MenuPageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setupRecyclerView();
-        if (mMenuPageViewModel.getViewModels() == null) {
+        if (mMenuPageViewModel != null && mMenuPageViewModel.getViewModels() == null) {
             mMenuPageViewModel.start();
-            Log.d(TAG, "we are here");
         }
     }
 
@@ -67,16 +62,18 @@ public class MenuPageFragment extends Fragment {
         RecyclerView recyclerView = mMenuPageFragmentBinding.recyclerView;
         recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), SPAN_COUNT));
 
-        AppContainer container = ((FastFoodApp) getActivity().getApplication()).appContainer;
-        ArrayList<MenuItemViewModel> itemViewModels = mMenuPageViewModel.getViewModels();
+        AppContainer container = ((FastFoodApp) Objects.requireNonNull(getActivity())
+                .getApplication()).appContainer;
+        ArrayList<MenuItemViewModel> itemViewModels = new ArrayList<>(0);
+        if (mMenuPageViewModel != null) {
+            itemViewModels = mMenuPageViewModel.getViewModels();
+        }
 
         MenuItemsAdapter adapter = new MenuItemsAdapter(new ArrayList<>(0), itemViewModels,
                 getContext(), container.dataSource, mMenuPageViewModel);
         recyclerView.setAdapter(adapter);
 
-
-        SpacingItemDecoration decoration = new SpacingItemDecoration((int) getResources().getDimension(R.dimen.grid_item_spacing),
-                SPAN_COUNT);
+        SpacingItemDecoration decoration = new SpacingItemDecoration((int) getResources().getDimension(R.dimen.grid_item_spacing), SPAN_COUNT);
         recyclerView.addItemDecoration(decoration);
     }
 
@@ -117,6 +114,7 @@ public class MenuPageFragment extends Fragment {
         @Override
         public MenuItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             MenuItemBinding menuItemBinding = MenuItemBinding.inflate(LayoutInflater.from(parent.getContext()));
+
             return new MenuItemHolder(menuItemBinding);
         }
 
@@ -134,6 +132,7 @@ public class MenuPageFragment extends Fragment {
         @Override
         public int getItemCount() { return mMenuItems != null ? mMenuItems.size() : 0; }
 
+        @SuppressLint("NotifyDataSetChanged")
         public void replaceData(ArrayList<MenuItemMainInfo> menuItems,
                                 ArrayList<MenuItemViewModel> itemViewModels) {
             if (menuItems != null && itemViewModels == null) {

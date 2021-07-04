@@ -4,7 +4,6 @@ package com.example.fastfoodapp.eugene.data;
 import com.example.fastfoodapp.eugene.data.order.Order;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface UsersAndRestaurantsDataSource {
 
@@ -29,7 +28,7 @@ public interface UsersAndRestaurantsDataSource {
         void onFailure();
     }
 
-    interface GetUserPaymentMethodsNames {
+    interface GetUserPaymentMethodsNamesCallback {
 
         void onGetAllUserPaymentMethodsNames(ArrayList<String> paymentMethodsNames);
 
@@ -37,6 +36,20 @@ public interface UsersAndRestaurantsDataSource {
     }
 
     interface OrderPlaceCallback {
+
+        void onSuccess();
+
+        void onFailure();
+    }
+
+    interface GetUserOrderHistoryCallback {
+
+        void onGetUserOrderHistory(ArrayList<Order> orders);
+
+        void onDataNotAvailable();
+    }
+
+    interface ClearUserOrderHistoryCallback {
 
         void onSuccess();
 
@@ -51,7 +64,11 @@ public interface UsersAndRestaurantsDataSource {
 
     void addNewCard(String uid, CardInfo card, String cardName, AddCardCallback callback);
 
-    void getUserPaymentMethodsNames(String uid, GetUserPaymentMethodsNames callback);
+    void getUserPaymentMethodsNames(String uid, GetUserPaymentMethodsNamesCallback callback);
 
-    void placeOrder(Order order, OrderPlaceCallback callback);
+    void placeOrder(Order order, String uid, OrderPlaceCallback callback);
+
+    void getAllUserOrderHistory(String uid, GetUserOrderHistoryCallback callback);
+
+    void clearAllUserOrderHistory(String uid, ClearUserOrderHistoryCallback callback);
 }

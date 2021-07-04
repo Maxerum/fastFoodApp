@@ -149,6 +149,7 @@ public class PayMainActivity extends AppCompatActivity {
                 dialogFragment.setViewModel(viewModel);
                 dialogFragment.showNow(manager, PaymentMethodsDialog.TAG);
             }
+            viewModel.setDismissDialog(dialogFragment);
         });
 
         //add user credit card (? new page with formatted input?)
@@ -194,8 +195,10 @@ public class PayMainActivity extends AppCompatActivity {
                     selectedItemNames.put(menuItem.title, selectedItems.get(menuItem));
                 }
 
-                Order order = new Order(user.getUid(), paymentMethodName, selectedItemNames, restaurant);
-                mDataSource.placeOrder(order, callback);
+                String orderTotal = ((FastFoodApp) getApplication()).appContainer.orderTotal;
+                Order order = new Order(user.getUid(), paymentMethodName, selectedItemNames,
+                        restaurant, orderTotal);
+                mDataSource.placeOrder(order, user.getUid(), callback);
             } else {
                 Toast.makeText(this, "Payment method is not selected", Toast.LENGTH_SHORT).show();
             }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fastfoodapp.eugene.ordersummary.OrderSummaryItemViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:padding="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/shopping_cart_item_corner_radius"
+        app:cardElevation="@dimen/cardview_default_elevation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/shopping_cart_item_image_holder"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="@dimen/button_rounded_corners_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/shopping_cart_item_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:src="@{viewModel.mImageUri}"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/menu_item_name"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintBottom_toTopOf="@id/price"
+                app:layout_constraintStart_toEndOf="@id/shopping_cart_item_image_holder"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Black"
+                android:text="@{viewModel.mMenuItemName}"/>
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/quantity"
+                app:layout_constraintStart_toStartOf="@id/menu_item_name"
+                app:layout_constraintTop_toBottomOf="@id/menu_item_name"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Black"
+                android:text="@{viewModel.mPrice}"/>
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/menu_item_name"
+                app:layout_constraintTop_toBottomOf="@id/price"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Black"
+                android:text="@{viewModel.mQuantity}"/>
+
+            <ImageButton
+                android:id="@+id/remove_from_cart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_gray_close_button"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{() -> viewModel.removeItem()}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

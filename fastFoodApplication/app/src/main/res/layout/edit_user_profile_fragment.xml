@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.userprofile.EditUserProfileViewModel" />
+            type="com.example.fastfoodapp.eugene.userprofile.editprofile.EditUserProfileViewModel" />
     </data>
 
     <LinearLayout

@@ -1,5 +1,6 @@
 package com.example.fastfoodapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        startAuthenticationFlow();
+//        startAuthenticationFlow();
 
-//        Intent intent = new Intent(this, MenuActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 
     private void startAuthenticationFlow() {
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         startActivityForResult(auth.createSignInIntentBuilder()
                 .setAvailableProviders(idProviders).setTheme(R.style.Theme_FastFoodApp)
-                        .setAuthMethodPickerLayout(customLayout).setIsSmartLockEnabled(false).build(),
+                        .setAuthMethodPickerLayout(customLayout).setLockOrientation(true)
+                        .setIsSmartLockEnabled(false).build(),
                 RC_SIGN_IN);
     }
 

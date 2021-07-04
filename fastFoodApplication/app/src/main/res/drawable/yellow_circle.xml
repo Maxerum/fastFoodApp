@@ -4,6 +4,6 @@
 
     <solid android:color="@color/fastfoodapp_yellow" />
     <size
-        android:height="36dp"
-        android:width="36dp" />
+        android:height="42dp"
+        android:width="42dp" />
 </shape>

@@ -41,7 +41,8 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:foreground="@drawable/ripple_dark"
-            android:stateListAnimator="@null"/>
+            android:stateListAnimator="@null"
+            android:onClick="@{() -> viewModel.openUserOrderHistory()}"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"

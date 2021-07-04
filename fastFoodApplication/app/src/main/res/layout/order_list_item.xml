@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fastfoodapp.eugene.userprofile.orderhistory.OrderRecordViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:backgroundTint="@color/fastfoodapp_light_gray"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="390dp"
+            android:layout_height="110dp"
+            android:orientation="vertical"
+            android:background="@drawable/ripple_dark">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    android:id="@+id/order_timestamp"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.mOrderTimestamp}"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Large.Black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/order_total"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/order_payment_method_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.mOrderPaymentMethodName}"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Large.Dark"
+                    app:layout_constraintStart_toEndOf="@id/order_timestamp"
+                    app:layout_constraintTop_toTopOf="@id/order_timestamp" />
+
+                <TextView
+                    android:id="@+id/order_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.mOrderTotal}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/order_timestamp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Biggest.Dark.Bold"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    android:id="@+id/order_items"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.mOrderItems}"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Dark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/order_status"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/order_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.mOrderStatus}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/order_items"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Green" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

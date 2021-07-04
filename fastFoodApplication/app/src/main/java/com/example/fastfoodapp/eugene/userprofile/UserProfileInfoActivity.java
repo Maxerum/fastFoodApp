@@ -2,7 +2,9 @@ package com.example.fastfoodapp.eugene.userprofile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +13,8 @@ import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.eugene.ViewModelHolder;
 import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
+import com.example.fastfoodapp.eugene.userprofile.editprofile.EditUserProfileActivity;
+import com.example.fastfoodapp.eugene.userprofile.orderhistory.UserOrderHistoryActivity;
 import com.example.fastfoodapp.eugene.util.ActivityUtils;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.snackbar.Snackbar;
@@ -19,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
-public class UserProfileActivity extends AppCompatActivity implements EditUserProfileNavigator {
+public class UserProfileInfoActivity extends AppCompatActivity implements UserProfileInfoNavigator {
 
     public static final String TAG = "UserProfileActivity1";
 
@@ -41,6 +45,14 @@ public class UserProfileActivity extends AppCompatActivity implements EditUserPr
         UserProfileFragment fragment = findOrCreateFragment();
 
         fragment.setViewModel(mViewModel);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
     }
 
     private UserProfileFragment findOrCreateFragment() {
@@ -91,6 +103,17 @@ public class UserProfileActivity extends AppCompatActivity implements EditUserPr
             intent.putExtra(EditUserProfileActivity.EMAIL_KEY, currentEmail);
 
             startActivityForResult(intent, EDIT_PROFILE_RC);
+        } else {
+            Snackbar.make(findViewById(android.R.id.content), "You have signed out",
+                    Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void openUserOrderHistory() {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent intent = new Intent(this, UserOrderHistoryActivity.class);
+            startActivity(intent);
         } else {
             Snackbar.make(findViewById(android.R.id.content), "You have signed out",
                     Snackbar.LENGTH_LONG).show();

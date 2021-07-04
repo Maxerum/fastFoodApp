@@ -1,4 +1,4 @@
-package com.example.fastfoodapp.eugene.userprofile;
+package com.example.fastfoodapp.eugene.userprofile.editprofile;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;

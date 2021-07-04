@@ -39,5 +39,8 @@ public class AppContainer {
 
     public final UsersAndRestaurantsRemoteDataSource usersDataSource;
 
+    // TODO: need place in a separate class
     public HashMap<MenuItemMainInfo, Integer> selectedItems;
+
+    public String orderTotal;
 }

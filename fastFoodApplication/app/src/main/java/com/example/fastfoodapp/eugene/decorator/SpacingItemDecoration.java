@@ -1,4 +1,4 @@
-package com.example.fastfoodapp.eugene.util;
+package com.example.fastfoodapp.eugene.decorator;
 
 import android.graphics.Rect;
 import android.view.View;
@@ -20,7 +20,6 @@ public class SpacingItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect rect, @NonNull View view, RecyclerView parent, RecyclerView.State state) {
         int position = parent.getChildLayoutPosition(view);
         int column = position % spanCount;
-
 
         rect.left = spacing - spacing * column / spanCount;
         rect.right = (column + 1) * spacing / spanCount;
