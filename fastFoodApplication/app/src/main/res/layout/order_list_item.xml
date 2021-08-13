@@ -1,102 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.userprofile.orderhistory.OrderRecordViewModel" />
+            type="com.example.fastfoodapp.userprofile.orderhistory.OrderRecordViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:backgroundTint="@color/fastfoodapp_light_gray"
-        android:clickable="true"
-        android:focusable="true">
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/shopping_cart_item_corner_radius"
+        app:cardElevation="@dimen/cardview_default_elevation">
 
         <LinearLayout
-            android:layout_width="390dp"
-            android:layout_height="110dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/ripple_dark">
+            android:padding="20dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.OrderTimestamp.Black.Bold"
+                android:text="@string/placeholder_text" />
 
-                <TextView
-                    android:id="@+id/order_timestamp"
-                    android:layout_width="210dp"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.mOrderTimestamp}"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="@style/FastFoodApp.TextAppearance.Large.Black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/order_total"
-                    app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/order_payment_method_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.mOrderPaymentMethodName}"
-                    android:textAppearance="@style/FastFoodApp.TextAppearance.Large.Dark"
-                    app:layout_constraintStart_toEndOf="@id/order_timestamp"
-                    app:layout_constraintTop_toTopOf="@id/order_timestamp" />
-
-                <TextView
-                    android:id="@+id/order_total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.mOrderTotal}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/order_timestamp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:textAppearance="@style/FastFoodApp.TextAppearance.Biggest.Dark.Bold"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <View
+                android:layout_height="1dp"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                android:background="@color/fastfoodapp_border_gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Black"
+                android:text="@string/placeholder_text" />
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/fastfoodapp_border_gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Black"
+                android:text="@string/placeholder_text" />
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/fastfoodapp_border_gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/order_items"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.mOrderItems}"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Dark"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/order_status"
-                    app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/order_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.mOrderStatus}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/order_items"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Green" />
+                    android:text="@string/order_total"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/placeholder_text"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_status"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/placeholder_text"
+                    android:textAppearance="@style/FastFoodApp.TextAppearance.Big.Red" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.userprofile.UserProfileViewModel" />
+            type="com.example.fastfoodapp.userprofile.UserProfileViewModel" />
     </data>
 
     <LinearLayout
@@ -29,12 +29,12 @@
         <View
             android:layout_height="1dp"
             android:layout_width="match_parent"
-            android:background="@color/fastfoodapp_gray" />
+            android:background="@color/fastfoodapp_border_gray" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="@dimen/account_screen_button_height"
-            android:text="@string/order_history"
+            android:text="@string/user_order_history"
             android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
             android:textColor="@color/black"
             android:backgroundTint="@color/fastfoodapp_light_gray"
@@ -54,7 +54,7 @@
             android:insetBottom="0dp"
             app:cornerRadius="0dp"
             android:stateListAnimator="@null"
-            android:onClick="@{() -> viewModel.signOut()}"/>
+            android:onClick="@{() -> viewModel.signOut()}" />
 
     </LinearLayout>
 

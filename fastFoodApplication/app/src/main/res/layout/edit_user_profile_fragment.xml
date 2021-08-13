@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.userprofile.editprofile.EditUserProfileViewModel" />
+            type="com.example.fastfoodapp.userprofile.editprofile.EditUserProfileViewModel" />
     </data>
 
     <LinearLayout
@@ -17,38 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp">
-
-            <TextView
-                android:id="@+id/user_id_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/user_id_text"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
-                app:layout_constraintEnd_toStartOf="@id/user_id"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/user_id" />
-
-            <TextView
-                android:id="@+id/user_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:text="@{viewModel.mUid}"
-                android:textAppearance="@style/FastFoodApp.TextAppearance.Regular.Dark.Bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/user_id_text"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="6dp">
 
             <TextView
                 android:id="@+id/email_text"

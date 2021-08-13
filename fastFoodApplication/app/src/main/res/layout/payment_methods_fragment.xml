@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.cardsdialog.PaymentMethodsViewModel" />
+            type="com.example.fastfoodapp.orderdetails.PaymentMethodViewModel" />
     </data>
 
     <LinearLayout
@@ -13,27 +13,50 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/payment_methods_recycler_view"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:items="@{viewModel.mPaymentMethodsNames}"/>
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/app_bar_elevation"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/payment_methods_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:title="@string/payment_method" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/with_cash"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/fastfoodapp_light_gray"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:foreground="@drawable/ripple_dark"
+            android:stateListAnimator="@null"
+            android:onClick="@{() -> viewModel.selectWithCash()}"/>
 
         <View
             android:layout_height="1dp"
             android:layout_width="match_parent"
-            android:background="@color/fastfoodapp_light_gray"/>
+            android:background="@color/fastfoodapp_border_gray" />
 
-        <Button
-            android:id="@+id/done_button"
+        <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_height="60dp"
+            android:text="@string/with_card"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Dark"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/fastfoodapp_light_gray"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:foreground="@drawable/ripple_dark"
-            android:text="@string/done_button"
-            android:textColor="@android:color/black"
-            android:onClick="@{() -> viewModel.dismissDialog()}">
-        </Button>
+            android:stateListAnimator="@null"
+            android:onClick="@{() -> viewModel.selectWithCard()}"/>
 
     </LinearLayout>
 

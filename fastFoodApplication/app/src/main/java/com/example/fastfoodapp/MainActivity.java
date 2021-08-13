@@ -1,6 +1,5 @@
 package com.example.fastfoodapp;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.fastfoodapp.eugene.menu.MenuActivity;
+import com.example.fastfoodapp.menu.MenuActivity;
 import com.firebase.ui.auth.AuthMethodPickerLayout;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -26,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        startAuthenticationFlow();
+        startAuthenticationFlow();
 
-        Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, MenuActivity.class);
+//        startActivity(intent);
     }
 
     private void startAuthenticationFlow() {

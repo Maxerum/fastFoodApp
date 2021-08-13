@@ -5,13 +5,12 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.ordersummary.OrderSummaryItemViewModel" />
+            type="com.example.fastfoodapp.ordersummary.OrderSummaryItemViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:padding="20dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/shopping_cart_item_corner_radius"
         app:cardElevation="@dimen/cardview_default_elevation">
@@ -76,10 +75,11 @@
 
             <ImageButton
                 android:id="@+id/remove_from_cart_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_gray_close_button"
+                android:scaleType="fitXY"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

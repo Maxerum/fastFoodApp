@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.ordersummary.OrderSummaryViewModel" />
+            type="com.example.fastfoodapp.ordersummary.OrderSummaryViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -44,7 +44,8 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 app:cornerRadius="@dimen/button_rounded_corners_radius"
-                android:text="@{viewModel.mTotalPrice}" />
+                android:text="@{viewModel.mTotalPrice}"
+                android:onClick="@{() -> viewModel.proceedToPayment()}"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

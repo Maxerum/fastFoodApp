@@ -4,31 +4,43 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable-v24/item_divider.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/bottom_sheet_rounded_bg.xml" value="0.2125" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/close_button.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/dialog_rounded_bg.xml" value="0.2125" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ic_android.xml" value="0.2125" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ic_close_icon.xml" value="0.2125" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ic_minus_icon.xml" value="0.2125" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ic_plus_icon.xml" value="0.25" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ic_round_arrow_forward_24.xml" value="0.2125" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/ripple_light.xml" value="0.2125" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/drawable/yellow_circle.xml" value="0.2125" />
-        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout-v23/user_profile_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout-v23/user_profile_fragment.xml" value="0.18" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/auth_screen.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/dim4es_toolbar_for_pay_page.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/edit_user_profile_activity.xml" value="0.19635416666666666" />
-        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/edit_user_profile_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/edit_user_profile_fragment.xml" value="0.25" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/example_item.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/menu_activity.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/menu_item.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/menu_item_info_dialog.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/menu_page_fragment.xml" value="0.19635416666666666" />
-        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_list_item.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_details_fragment.xml" value="0.33" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_details_fragment_container.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_list_item.xml" value="0.33" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_summary_activity.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_summary_fragment.xml" value="0.21829762594093804" />
-        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_summary_item.xml" value="0.49100968188105115" />
-        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/payment_methods_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/order_summary_item.xml" value="0.33" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/payment_method_item.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/payment_methods_fragment.xml" value="0.3927083333333333" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/restaurant_list_item.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/restaurants_list_fragment.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/row.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/test_fragment.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/user_order_history_fragment.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/user_profile_activity.xml" value="0.19635416666666666" />
         <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/layout/user_profile_fragment.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/menu/menu_options_menu.xml" value="0.19635416666666666" />
+        <entry key="..\:/labs archive/tritpo 2/fastFoodApp/fastFoodApplication/app/src/main/res/menu/user_profile_options_menu.xml" value="0.19635416666666666" />
       </map>
     </option>
   </component>

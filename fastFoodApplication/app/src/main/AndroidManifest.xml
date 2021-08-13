@@ -11,17 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FastFoodApp">
-        <activity
-            android:name=".Dim4es.SuccessPay.SuccessPayPage"
-            android:theme="@style/Theme.Design.NoActionBar"
-            />
-        <activity
-            android:name=".Dim4es.CreditCard.AddFormatCreditCard"
-            android:theme="@style/Theme.Design.NoActionBar"
-            />
-        <activity
-            android:name=".Dim4es.PayPage.PayMainActivity"
-            android:theme="@style/Theme.Design.NoActionBar" />
 
         <activity android:name=".MainActivity"
             android:label="@string/app_name"
@@ -33,27 +22,26 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Maxerum.OrderPayingActivity" />
 
-        <activity android:name=".eugene.menu.MenuActivity"
+        <activity android:name=".menu.MenuActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
-        <activity android:name=".eugene.ordersummary.OrderSummaryActivity"
+        <activity android:name=".ordersummary.OrderSummaryActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
-        <activity android:name=".eugene.userprofile.UserProfileInfoActivity"
+        <activity android:name=".userprofile.UserProfileInfoActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
-        <activity android:name=".eugene.userprofile.orderhistory.UserOrderHistoryActivity"
-            android:parentActivityName=".eugene.userprofile.UserProfileInfoActivity"
+        <activity android:name=".userprofile.orderhistory.UserOrderHistoryActivity"
+            android:parentActivityName=".userprofile.UserProfileInfoActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
-        <activity android:name=".eugene.userprofile.editprofile.EditUserProfileActivity"
-            android:parentActivityName=".eugene.userprofile.UserProfileInfoActivity"
+        <activity android:name=".userprofile.editprofile.EditUserProfileActivity"
+            android:parentActivityName=".userprofile.UserProfileInfoActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 

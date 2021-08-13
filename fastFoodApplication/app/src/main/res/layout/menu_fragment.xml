@@ -4,11 +4,11 @@
 
     <data>
         <import type="android.view.View" />
-        <import type="com.example.fastfoodapp.eugene.menu.MenuViewModel" />
+        <import type="com.example.fastfoodapp.menu.MenuViewModel" />
 
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.menu.MenuViewModel" />
+            type="com.example.fastfoodapp.menu.MenuViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.fastfoodapp.eugene.userprofile.orderhistory.UserOrderHistoryViewModel" />
+            type="com.example.fastfoodapp.userprofile.orderhistory.UserOrderHistoryViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -19,7 +19,6 @@
             app:items="@{viewModel.mOrders}"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/log_in_email_button"
             app:cornerRadius="@dimen/button_rounded_corners_radius"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"

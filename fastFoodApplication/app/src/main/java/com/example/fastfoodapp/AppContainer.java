@@ -6,10 +6,10 @@ import android.os.Looper;
 
 import androidx.core.os.HandlerCompat;
 
-import com.example.fastfoodapp.eugene.data.MenuItemsDatabase;
-import com.example.fastfoodapp.eugene.data.MenuItemsLocalDataSource;
-import com.example.fastfoodapp.eugene.data.UsersAndRestaurantsRemoteDataSource;
-import com.example.fastfoodapp.eugene.data.item.MenuItemMainInfo;
+import com.example.fastfoodapp.data.MenuItemsDatabase;
+import com.example.fastfoodapp.data.MenuItemsLocalDataSource;
+import com.example.fastfoodapp.data.UsersAndRestaurantsRemoteDataSource;
+import com.example.fastfoodapp.data.item.MenuItemMainInfo;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -39,8 +39,9 @@ public class AppContainer {
 
     public final UsersAndRestaurantsRemoteDataSource usersDataSource;
 
-    // TODO: need place in a separate class
+    // TODO: need to place in a separate class
     public HashMap<MenuItemMainInfo, Integer> selectedItems;
+    public String totalPrice;
 
     public String orderTotal;
 }
