@@ -24,30 +24,33 @@
 
 
         <activity android:name=".menu.MenuActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
         <activity android:name=".ordersummary.OrderSummaryActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
         <activity android:name=".userprofile.UserProfileInfoActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
         <activity android:name=".userprofile.orderhistory.UserOrderHistoryActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".userprofile.UserProfileInfoActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
         <activity android:name=".userprofile.editprofile.EditUserProfileActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".userprofile.UserProfileInfoActivity"
             android:theme="@style/Theme.FastFoodApp.NoActionBar">
         </activity>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

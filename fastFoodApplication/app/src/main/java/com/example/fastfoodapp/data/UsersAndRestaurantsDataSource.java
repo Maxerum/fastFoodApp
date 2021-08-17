@@ -4,6 +4,7 @@ package com.example.fastfoodapp.data;
 import com.example.fastfoodapp.data.order.Order;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface UsersAndRestaurantsDataSource {
 
@@ -16,21 +17,7 @@ public interface UsersAndRestaurantsDataSource {
 
     interface GetAllRestaurantsCallback {
 
-        void onGetAllRestaurants(ArrayList<Restaurant> restaurants);
-
-        void onDataNotAvailable();
-    }
-
-    interface AddCardCallback {
-
-        void onSuccess();
-
-        void onFailure();
-    }
-
-    interface GetUserPaymentMethodsNamesCallback {
-
-        void onGetAllUserPaymentMethodsNames(ArrayList<String> paymentMethodsNames);
+        void onGetAllRestaurants(List<Restaurant> restaurants);
 
         void onDataNotAvailable();
     }
@@ -44,7 +31,7 @@ public interface UsersAndRestaurantsDataSource {
 
     interface GetUserOrderHistoryCallback {
 
-        void onGetUserOrderHistory(ArrayList<Order> orders);
+        void onGetUserOrderHistory(List<Order> orders);
 
         void onDataNotAvailable();
     }
@@ -62,7 +49,7 @@ public interface UsersAndRestaurantsDataSource {
 
     void placeOrder(Order order, String uid, OrderPlaceCallback callback);
 
-//    void getAllUserOrderHistory(String uid, GetUserOrderHistoryCallback callback);
-//
-//    void clearAllUserOrderHistory(String uid, ClearUserOrderHistoryCallback callback);
+    void getUserOrderHistory(String uid, GetUserOrderHistoryCallback callback);
+
+    void clearUserOrderHistory(String uid, ClearUserOrderHistoryCallback callback);
 }

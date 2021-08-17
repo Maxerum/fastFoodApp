@@ -14,6 +14,7 @@ import com.firebase.ui.auth.IdpResponse;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startAuthenticationFlow() {
-        List<AuthUI.IdpConfig> idProviders = Arrays.asList(new AuthUI.IdpConfig.PhoneBuilder().build(),
+        List<AuthUI.IdpConfig> idProviders = Arrays.asList(new AuthUI.IdpConfig.GoogleBuilder().build(),
                 new AuthUI.IdpConfig.EmailBuilder().build());
         AuthUI auth = AuthUI.getInstance();
 
         AuthMethodPickerLayout customLayout = new AuthMethodPickerLayout
-                .Builder(R.layout.auth_screen).setPhoneButtonId(R.id.log_in_phone_button)
+                .Builder(R.layout.auth_screen).setGoogleButtonId(R.id.log_in_google_button)
                 .setEmailButtonId(R.id.log_in_email_button).build();
 
         startActivityForResult(auth.createSignInIntentBuilder()
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.d(TAG, "onActivityResult");
+
         if (requestCode == RC_SIGN_IN) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
@@ -63,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
                 if (response != null) {
-                    Log.d(TAG, "Error code: " + response.getError().getErrorCode());
+                    Log.d(TAG, "Error code: " + Objects.requireNonNull(response.getError()).getErrorCode());
                 }
-                finish();
             }
+            finish();
         }
     }
 }

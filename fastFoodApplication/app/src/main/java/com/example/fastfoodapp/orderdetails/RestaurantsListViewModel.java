@@ -11,6 +11,7 @@ import com.example.fastfoodapp.data.UsersAndRestaurantsDataSource;
 import com.example.fastfoodapp.data.UsersAndRestaurantsRemoteDataSource;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RestaurantsListViewModel {
 
@@ -40,7 +41,7 @@ public class RestaurantsListViewModel {
     private void loadData() {
         mDataSource.getAllRestaurants(new UsersAndRestaurantsDataSource.GetAllRestaurantsCallback() {
             @Override
-            public void onGetAllRestaurants(ArrayList<Restaurant> restaurants) {
+            public void onGetAllRestaurants(List<Restaurant> restaurants) {
                 mRestaurants.clear();
                 mRestaurants.addAll(restaurants);
             }

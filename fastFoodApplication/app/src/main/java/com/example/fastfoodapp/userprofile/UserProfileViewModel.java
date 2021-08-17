@@ -17,7 +17,7 @@ public class UserProfileViewModel {
 
     public final ObservableField<String> mUid = new ObservableField<>();
 
-    public final ObservableField<String> mSnackBarText = new ObservableField<>();
+    public final ObservableField<String> mSnackBarText = new ObservableField<>("");
 
     private final UsersAndRestaurantsRemoteDataSource mUsersDataSource;
 

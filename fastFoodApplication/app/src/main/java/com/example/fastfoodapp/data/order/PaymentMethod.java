@@ -1,7 +1,6 @@
 package com.example.fastfoodapp.data.order;
 
 public enum PaymentMethod {
-
     CASH(0),
     CARD(1);
 

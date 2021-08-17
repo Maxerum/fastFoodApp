@@ -14,14 +14,14 @@
         android:textAppearance="@style/FastFoodApp.TextAppearance.WelcomeScreen" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/log_in_phone_button"
+        android:id="@+id/log_in_google_button"
         app:cornerRadius="@dimen/button_rounded_corners_radius"
         android:layout_width="match_parent"
         android:layout_height="@dimen/welcome_screen_button_height"
         android:layout_marginStart="@dimen/welcome_screen_side_margin"
         android:layout_marginTop="260dp"
         android:layout_marginEnd="@dimen/welcome_screen_side_margin"
-        android:text="@string/log_in_phone_action" />
+        android:text="@string/log_in_google_action" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/log_in_email_button"

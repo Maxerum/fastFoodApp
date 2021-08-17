@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import com.example.fastfoodapp.databinding.UserProfileFragmentBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Objects;
+
 public class UserProfileFragment extends Fragment {
 
     public static final String TAG = "UserProfileFragment";
@@ -27,19 +29,13 @@ public class UserProfileFragment extends Fragment {
 
     public UserProfileFragment() { }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        mViewModel.start();
-    }
-
     private void setupSnackBar() {
         mViewModel.mSnackBarText.addOnPropertyChangedCallback(
                 new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
-                Snackbar.make(getView(), mViewModel.mSnackBarText.get(), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(requireView(),
+                        Objects.requireNonNull(mViewModel.mSnackBarText.get()), Snackbar.LENGTH_LONG).show();
             }
         });
     }
@@ -56,6 +52,8 @@ public class UserProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         setupSnackBar();
+
+        mViewModel.start();
     }
 
     public void setViewModel(UserProfileViewModel viewModel) {

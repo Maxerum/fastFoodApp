@@ -2,6 +2,9 @@ package com.example.fastfoodapp.util;
 
 import android.util.Log;
 
+import java.util.Iterator;
+import java.util.Map;
+
 public class ConvertUtils {
 
     private static final String TAG = "ConvertUtils";
@@ -17,5 +20,22 @@ public class ConvertUtils {
         }
         int result = (int) (amountDouble * 100);
         return result;
+    }
+
+    public static String convertMapToString(Map<String, Integer> map) {
+        StringBuilder builder = new StringBuilder();
+
+        Iterator<String> it = map.keySet().iterator();
+        while (it.hasNext()) {
+            String itemName = it.next();
+            builder.append(itemName)
+                    .append(" x")
+                    .append(map.get(itemName));
+
+            if (it.hasNext()) {
+                builder.append(", ");
+            }
+        }
+        return builder.toString();
     }
 }

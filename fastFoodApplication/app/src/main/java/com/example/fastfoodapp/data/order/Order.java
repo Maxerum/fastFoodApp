@@ -7,19 +7,21 @@ import java.util.Map;
 
 public class Order {
 
-    private final Timestamp timestamp;
-    private final Map<String, Integer> orderItems;
-    private final int status;
-    private final String restaurant;
-    private final String orderTotal;
-    private final int paymentMethod;
-    private final int paymentStatus;
+    private Timestamp timestamp;
+    private Map<String, Integer> orderItems;
+    private int status;
+    private String restaurant;
+    private String orderTotal;
+    private int paymentMethod;
+    private int paymentStatus;
+
+    public Order() {}
 
     public Order(Map<String, Integer> orderItems, String restaurant,
                  String orderTotal, PaymentMethod paymentMethod, PaymentStatus paymentStatus) {
         this.timestamp = new Timestamp(new Date());
         this.orderItems = orderItems;
-        status = OrderStatus.Cooking.getValue();
+        status = OrderStatus.COOKING.getValue();
         this.restaurant = restaurant;
         this.orderTotal = orderTotal;
         this.paymentMethod = paymentMethod.getValue();

@@ -2,6 +2,7 @@ package com.example.fastfoodapp.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import com.example.fastfoodapp.AppContainer;
 import com.example.fastfoodapp.FastFoodApp;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.ViewModelHolder;
+import com.example.fastfoodapp.orderdetails.ToastMessageChangedCallback;
 import com.example.fastfoodapp.ordersummary.OrderSummaryActivity;
 import com.example.fastfoodapp.userprofile.UserProfileInfoActivity;
 import com.example.fastfoodapp.data.item.MenuItemMainInfo;
@@ -18,10 +20,11 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class MenuActivity extends AppCompatActivity implements ShoppingCartNavigator,
-        UserProfileNavigator{
+        UserProfileNavigator, ToastMessageChangedCallback {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,27 +72,23 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
     }
 
     @Override
-    public void openOrderSummaryActivity(HashMap<MenuItemMainInfo, Integer> selectedItems) {
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            ((FastFoodApp) getApplication()).appContainer.selectedItems = selectedItems;
+    public void openOrderSummaryActivity(Map<MenuItemMainInfo, Integer> selectedItems) {
+        ((FastFoodApp) getApplication()).appContainer.selectedItems = selectedItems;
+        Intent intent = new Intent(this, OrderSummaryActivity.class);
 
-            Intent intent = new Intent(this, OrderSummaryActivity.class);
-
-            startActivity(intent);
-        } else {
-            Snackbar.make(findViewById(android.R.id.content), "You have signed out",
-                    Snackbar.LENGTH_LONG).show();
-        }
+        startActivity(intent);
     }
 
     @Override
     public void openUserProfileActivity() {
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Intent intent = new Intent(this, UserProfileInfoActivity.class);
-            startActivity(intent);
-        } else {
-            Snackbar.make(findViewById(android.R.id.content), "You have signed out",
-                    Snackbar.LENGTH_LONG).show();
+        Intent intent = new Intent(this, UserProfileInfoActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onMessageChanged(String message) {
+        if (message != null && !message.isEmpty()) {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
     }
 }

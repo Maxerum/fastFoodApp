@@ -13,6 +13,7 @@ import com.example.fastfoodapp.data.item.MenuItemMainInfo;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -40,7 +41,7 @@ public class AppContainer {
     public final UsersAndRestaurantsRemoteDataSource usersDataSource;
 
     // TODO: need to place in a separate class
-    public HashMap<MenuItemMainInfo, Integer> selectedItems;
+    public Map<MenuItemMainInfo, Integer> selectedItems;
     public String totalPrice;
 
     public String orderTotal;

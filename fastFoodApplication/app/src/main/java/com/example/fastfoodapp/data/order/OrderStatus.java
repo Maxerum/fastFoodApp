@@ -2,9 +2,9 @@ package com.example.fastfoodapp.data.order;
 
 public enum OrderStatus {
 
-    Cooking(0),
-    Ready(1),
-    Closed(2);
+    COOKING(0),
+    READY(1),
+    CLOSED(2);
 
     private final int value;
 
@@ -14,5 +14,21 @@ public enum OrderStatus {
 
     public int getValue() {
         return value;
+    }
+
+    public static OrderStatus createEnum(int value) {
+        OrderStatus status = null;
+        switch (value) {
+            case 0:
+                status = COOKING;
+                break;
+            case 1:
+                status = READY;
+                break;
+            case 2:
+                status = CLOSED;
+                break;
+        }
+        return status;
     }
 }

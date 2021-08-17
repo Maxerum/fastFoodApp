@@ -3,7 +3,9 @@ package com.example.fastfoodapp.menu;
 import android.util.Log;
 
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.Observable;
 import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -17,6 +19,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MenuViewModel {
     public static final String TAG = "MenuViewModel";
@@ -25,12 +28,23 @@ public class MenuViewModel {
 
     public ObservableList<MenuPageFragment> menuPageFragments = new ObservableArrayList<>();
 
+    public ObservableField<String> mToastText = new ObservableField<>("");
+
     private final MenuItemsLocalDataSource mDataSource;
 
     private ShoppingCartNavigator mNavigator;
 
     public MenuViewModel(MenuItemsLocalDataSource dataSource) {
         mDataSource = dataSource;
+
+        mToastText.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                if (mNavigator != null) {
+                    mNavigator.onMessageChanged(mToastText.get());
+                }
+            }
+        });
     }
 
     private void loadMenuPages(List<MenuCategory> categories) {
@@ -91,12 +105,18 @@ public class MenuViewModel {
     public void openOrderPayingActivity() {
         if (mNavigator != null) {
             // TODO: need to find a better way of passing data between activities
-            mNavigator.openOrderSummaryActivity(formOrder());
+            Map<MenuItemMainInfo, Integer> selected = constructOrder();
+            if (!selected.isEmpty()) {
+                mNavigator.openOrderSummaryActivity(selected);
+            } else {
+                mToastText.set("");
+                mToastText.set("You haven't chosen anything");
+            }
         }
     }
 
-    private HashMap<MenuItemMainInfo, Integer> formOrder() {
-        HashMap<MenuItemMainInfo, Integer> selectedItems = new HashMap<>();
+    private Map<MenuItemMainInfo, Integer> constructOrder() {
+        Map<MenuItemMainInfo, Integer> selectedItems = new HashMap<>();
 
         for (MenuPageFragment fragment : menuPageFragments) {
             MenuPageViewModel pageViewModel = fragment.getViewModel();
@@ -109,6 +129,6 @@ public class MenuViewModel {
                 }
             }
         }
-        return  selectedItems;
+        return selectedItems;
     }
 }

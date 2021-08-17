@@ -17,6 +17,7 @@
 
     <string name="log_in_phone_action">Log In with phone</string>
     <string name="log_in_email_action">Log In with email</string>
+    <string name="log_in_google_action">Log in with Google</string>
     <string name="clear_order_history_action">Clear order history</string>
     <string name="place_order_action">Place order</string>
     <string name="user_id_text">User ID:</string>

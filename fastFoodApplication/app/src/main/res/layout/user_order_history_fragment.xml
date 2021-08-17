@@ -12,11 +12,21 @@
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/orders_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:items="@{viewModel.mOrders}"/>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:refreshing="@{viewModel.mDataLoading}"
+            app:onRefresh="@{viewModel}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/orders_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="50dp"
+                app:items="@{viewModel.mOrders}"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.button.MaterialButton
             app:cornerRadius="@dimen/button_rounded_corners_radius"

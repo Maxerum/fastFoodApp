@@ -1,21 +1,27 @@
 package com.example.fastfoodapp.userprofile.orderhistory;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fastfoodapp.R;
+import com.example.fastfoodapp.data.order.OrderStatus;
 import com.example.fastfoodapp.databinding.OrderListItemBinding;
 import com.example.fastfoodapp.databinding.UserOrderHistoryFragmentBinding;
 import com.example.fastfoodapp.data.order.Order;
 import com.example.fastfoodapp.decorator.SpacingItemDecoration;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -77,13 +83,12 @@ public class UserOrderHistoryFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-//            if (position < mOrders.size()) {
-//                Order order = mOrders.get(position);
-//                OrderRecordViewModel viewModel = new OrderRecordViewModel();
-//                viewModel.mOrder.set(order);
-//
-//                holder.setViewModel(viewModel);
-//            }
+            if (position < mOrders.size()) {
+                Order order = mOrders.get(position);
+                OrderRecordViewModel viewModel = new OrderRecordViewModel(order);
+
+                holder.bindData(viewModel);
+            }
         }
 
         @Override
@@ -98,6 +103,7 @@ public class UserOrderHistoryFragment extends Fragment {
     }
 
     private static class OrderViewHolder extends RecyclerView.ViewHolder {
+
         private final OrderListItemBinding mBinding;
 
         public OrderViewHolder(OrderListItemBinding binding) {
@@ -106,8 +112,17 @@ public class UserOrderHistoryFragment extends Fragment {
             mBinding = binding;
         }
 
-        public void setViewModel(OrderRecordViewModel viewModel) {
+        @RequiresApi(api = Build.VERSION_CODES.M)
+        public void bindData(OrderRecordViewModel viewModel) {
             mBinding.setViewModel(viewModel);
+
+            TextView orderStatus = mBinding.orderStatus;
+            if (!viewModel.mOrderStatus.get().equals(OrderStatus.COOKING.name())) {
+                orderStatus.setTextAppearance(R.style.FastFoodApp_TextAppearance_Big_Green);
+            } else {
+                orderStatus.setTextAppearance(R.style.FastFoodApp_TextAppearance_Big_Red);
+            }
+
             mBinding.executePendingBindings();
         }
     }

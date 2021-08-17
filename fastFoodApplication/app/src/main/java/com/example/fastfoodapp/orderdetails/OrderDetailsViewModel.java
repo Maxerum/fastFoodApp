@@ -56,7 +56,7 @@ public class OrderDetailsViewModel implements PaymentSheetController.PaymentShee
 
     private final UsersAndRestaurantsDataSource mDataSource;
 
-    private final StripePaymentSheetConfigProvider configProvider =
+    private final StripePaymentSheetConfigProvider paymentSheetConfigProvider =
             new StripePaymentSheetConfigProvider();
 
     public OrderDetailsViewModel(String totalPrice, Context context) {
@@ -128,7 +128,7 @@ public class OrderDetailsViewModel implements PaymentSheetController.PaymentShee
 
                 int amountInCents = ConvertUtils.extractAmount(Objects.requireNonNull(mTotalPrice.get()));
 
-                configProvider.fetchInitData(amountInCents, "usd", "2020-08-27")
+                paymentSheetConfigProvider.fetchInitData(amountInCents, "usd", "2020-08-27")
                         .addOnCompleteListener(task -> {
                             try {
                                 JSONObject object = new JSONObject(task.getResult());
@@ -169,6 +169,10 @@ public class OrderDetailsViewModel implements PaymentSheetController.PaymentShee
             public void onSuccess() {
                 mToastText.set("");
                 mToastText.set("Order placed successfully");
+
+                if (mNavigator != null) {
+                    mNavigator.returnToHomeScreen();
+                }
             }
 
             @Override
@@ -200,7 +204,7 @@ public class OrderDetailsViewModel implements PaymentSheetController.PaymentShee
 
         } else if (result instanceof PaymentSheetResult.Failed) {
 
-
+            mToastText.set("Payment failed");
         }
     }
 }

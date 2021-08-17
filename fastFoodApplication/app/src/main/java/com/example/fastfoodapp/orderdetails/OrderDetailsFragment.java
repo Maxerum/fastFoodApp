@@ -1,5 +1,6 @@
 package com.example.fastfoodapp.orderdetails;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.databinding.OrderDetailsFragmentBinding;
 import com.example.fastfoodapp.data.Restaurant;
 import com.example.fastfoodapp.data.order.PaymentMethod;
+import com.example.fastfoodapp.menu.MenuActivity;
 import com.example.fastfoodapp.util.ActivityUtils;
 
 public class OrderDetailsFragment extends Fragment implements OrderDetailsNavigator,
@@ -86,5 +88,13 @@ public class OrderDetailsFragment extends Fragment implements OrderDetailsNaviga
 
             Toast.makeText(getContext(), newMessage, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void returnToHomeScreen() {
+        Intent intent = new Intent(getActivity(), MenuActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        requireContext().startActivity(intent);
     }
 }

@@ -2,10 +2,12 @@ package com.example.fastfoodapp.ordersummary;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableList;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fastfoodapp.AppContainer;
@@ -15,6 +17,7 @@ import com.example.fastfoodapp.data.item.ShoppingCartItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class OrderSummaryViewModel {
 
@@ -35,6 +38,35 @@ public class OrderSummaryViewModel {
     public void start() {
         loadData();
         calculateTotalPrice();
+
+        mSelectedItems.addOnListChangedCallback(new ObservableList.OnListChangedCallback<ObservableList<ShoppingCartItem>>() {
+            @Override
+            public void onChanged(ObservableList<ShoppingCartItem> sender) {
+                Log.d(TAG, "onChanged!!!");
+                if (mSelectedItems.size() == 0) {
+                    if (mNavigator != null) {
+                        mNavigator.continueShopping();
+                    }
+                }
+            }
+
+            @Override
+            public void onItemRangeChanged(ObservableList<ShoppingCartItem> sender, int positionStart, int itemCount) {
+            }
+
+            @Override
+            public void onItemRangeInserted(ObservableList<ShoppingCartItem> sender, int positionStart, int itemCount) {
+            }
+
+            @Override
+            public void onItemRangeMoved(ObservableList<ShoppingCartItem> sender, int fromPosition, int toPosition, int itemCount) {
+            }
+
+            @Override
+            public void onItemRangeRemoved(ObservableList<ShoppingCartItem> sender, int positionStart, int itemCount) {
+                Log.d(TAG, "onRemoved!!!");
+            }
+        });
     }
 
     public void setNavigator(OrderSummaryNavigator navigator) {
@@ -80,7 +112,7 @@ public class OrderSummaryViewModel {
     private void loadData() {
         AppContainer container = ((FastFoodApp) mContext.getApplicationContext()).appContainer;
 
-        HashMap<MenuItemMainInfo, Integer> selectedItems = container.selectedItems;
+        Map<MenuItemMainInfo, Integer> selectedItems = container.selectedItems;
         ArrayList<ShoppingCartItem> shoppingCartItems = new ArrayList<>();
 
         for (MenuItemMainInfo item : selectedItems.keySet()) {
@@ -97,8 +129,8 @@ public class OrderSummaryViewModel {
 
     private void saveEditedOrder() {
         AppContainer container = ((FastFoodApp) mContext.getApplicationContext()).appContainer;
-        HashMap<MenuItemMainInfo, Integer> savedItems = container.selectedItems;
-        HashMap<MenuItemMainInfo, Integer> updatedItems = new HashMap<>();
+        Map<MenuItemMainInfo, Integer> savedItems = container.selectedItems;
+        Map<MenuItemMainInfo, Integer> updatedItems = new HashMap<>();
 
         for (MenuItemMainInfo item : savedItems.keySet()) {
 
