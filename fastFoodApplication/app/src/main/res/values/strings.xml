@@ -40,5 +40,6 @@
     <string name="total_fat">Total Fat:</string>
     <string name="total_carbs">Total Carbs:</string>
     <string name="protein">Protein:</string>
+    <string name="empty_order_history_message">Order history is empty</string>
 
 </resources>

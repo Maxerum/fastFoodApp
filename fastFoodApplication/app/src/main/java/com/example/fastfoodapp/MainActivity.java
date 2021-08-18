@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         startAuthenticationFlow();
-
-//        Intent intent = new Intent(this, MenuActivity.class);
-//        startActivity(intent);
     }
 
     private void startAuthenticationFlow() {

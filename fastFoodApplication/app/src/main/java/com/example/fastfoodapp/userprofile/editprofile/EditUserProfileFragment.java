@@ -90,6 +90,5 @@ public class EditUserProfileFragment extends Fragment {
                 }
             }
         });
-
     }
 }

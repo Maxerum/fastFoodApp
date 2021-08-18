@@ -2,12 +2,15 @@ package com.example.fastfoodapp.userprofile.orderhistory;
 
 import android.util.Log;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableBoolean;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.fastfoodapp.BR;
 import com.example.fastfoodapp.data.UsersAndRestaurantsDataSource;
 import com.example.fastfoodapp.data.UsersAndRestaurantsRemoteDataSource;
 import com.example.fastfoodapp.data.order.Order;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UserOrderHistoryViewModel {
+public class UserOrderHistoryViewModel extends BaseObservable {
 
     public static final String TAG = "UserOrderHistoryVM";
 
@@ -36,6 +39,11 @@ public class UserOrderHistoryViewModel {
         loadAllOrders();
     }
 
+    @Bindable
+    public boolean isEmpty() {
+        return mOrders.isEmpty();
+    }
+
     private void loadAllOrders() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -47,6 +55,7 @@ public class UserOrderHistoryViewModel {
                 mOrders.addAll(orders);
 
                 mDataLoading.set(false);
+                notifyPropertyChanged(BR.empty);
             }
 
             @Override
@@ -66,7 +75,9 @@ public class UserOrderHistoryViewModel {
             @Override
             public void onSuccess() {
                 mOrders.clear();
+
                 mDataLoading.set(false);
+                notifyPropertyChanged(BR.empty);
             }
 
             @Override

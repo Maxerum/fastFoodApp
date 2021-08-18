@@ -3,13 +3,17 @@ package com.example.fastfoodapp.userprofile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.fastfoodapp.FastFoodApp;
+import com.example.fastfoodapp.MainActivity;
 import com.example.fastfoodapp.R;
 import com.example.fastfoodapp.ViewModelHolder;
 import com.example.fastfoodapp.data.UsersAndRestaurantsRemoteDataSource;
@@ -29,7 +33,21 @@ public class UserProfileInfoActivity extends AppCompatActivity implements UserPr
 
     private UserProfileViewModel mViewModel;
 
-    public static final int EDIT_PROFILE_RC = 5;
+    private final ActivityResultLauncher<Intent> mUpdateCredentials =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                Intent data = result.getData();
+                if (data != null) {
+                    String newEmail = data.getStringExtra(EditUserProfileActivity.EMAIL_KEY);
+                    String newPassword = data.getStringExtra(EditUserProfileActivity.PASSWORD_KEY);
+
+                    if (newEmail != null) {
+                        mViewModel.updateUserEmail(newEmail);
+                    }
+                    if (newPassword != null) {
+                        mViewModel.updateUserPassword(newPassword);
+                    }
+                }
+            });
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,60 +114,34 @@ public class UserProfileInfoActivity extends AppCompatActivity implements UserPr
 
     @Override
     public void openEditUserProfile(String uid, String currentEmail) {
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Intent intent = new Intent(this, EditUserProfileActivity.class);
+        Intent intent = new Intent(this, EditUserProfileActivity.class);
 
-            intent.putExtra(EditUserProfileActivity.UID_KEY, uid);
-            intent.putExtra(EditUserProfileActivity.EMAIL_KEY, currentEmail);
+        intent.putExtra(EditUserProfileActivity.UID_KEY, uid);
+        intent.putExtra(EditUserProfileActivity.EMAIL_KEY, currentEmail);
 
-            startActivityForResult(intent, EDIT_PROFILE_RC);
-        } else {
-            Snackbar.make(findViewById(android.R.id.content), "You have signed out",
-                    Snackbar.LENGTH_LONG).show();
-        }
+        mUpdateCredentials.launch(intent);
     }
 
     @Override
     public void openUserOrderHistory() {
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Intent intent = new Intent(this, UserOrderHistoryActivity.class);
-            startActivity(intent);
-        } else {
-            Snackbar.make(findViewById(android.R.id.content), "You have signed out",
-                    Snackbar.LENGTH_LONG).show();
-        }
+        Intent intent = new Intent(this, UserOrderHistoryActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void signOut() {
         AuthUI.getInstance().signOut(this).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Snackbar.make(findViewById(android.R.id.content), "Successfully signed out",
-                        Snackbar.LENGTH_LONG).show();
+                Toast.makeText(this, "Successfully signed out", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                startActivity(intent);
+
             } else {
-                Snackbar.make(findViewById(android.R.id.content), "Failed to sign out",
-                        Snackbar.LENGTH_LONG).show();
+                Toast.makeText(this, "Failed to sign out", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == EDIT_PROFILE_RC) {
-
-            if (resultCode == RESULT_OK && data != null) {
-                String newEmail = data.getStringExtra(EditUserProfileActivity.EMAIL_KEY);
-                String newPassword = data.getStringExtra(EditUserProfileActivity.PASSWORD_KEY);
-
-                if (newEmail != null) {
-                    mViewModel.updateUserEmail(newEmail);
-                }
-                if (newPassword != null) {
-                    mViewModel.updateUserPassword(newPassword);
-                }
-            }
-        }
     }
 }

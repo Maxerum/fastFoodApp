@@ -39,6 +39,27 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
         fragment.setViewModel(viewModel);
     }
 
+    @Override
+    public void openOrderSummaryActivity(Map<MenuItemMainInfo, Integer> selectedItems) {
+        ((FastFoodApp) getApplication()).appContainer.selectedItems = selectedItems;
+        Intent intent = new Intent(this, OrderSummaryActivity.class);
+
+        startActivity(intent);
+    }
+
+    @Override
+    public void openUserProfileActivity() {
+        Intent intent = new Intent(this, UserProfileInfoActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onMessageChanged(String message) {
+        if (message != null && !message.isEmpty()) {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private MenuFragment findOrCreateFragment() {
         MenuFragment menuFragment = (MenuFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragment_container);
@@ -68,27 +89,6 @@ public class MenuActivity extends AppCompatActivity implements ShoppingCartNavig
                     ViewModelHolder.createContainer(viewModel), MenuViewModel.TAG, false);
 
             return viewModel;
-        }
-    }
-
-    @Override
-    public void openOrderSummaryActivity(Map<MenuItemMainInfo, Integer> selectedItems) {
-        ((FastFoodApp) getApplication()).appContainer.selectedItems = selectedItems;
-        Intent intent = new Intent(this, OrderSummaryActivity.class);
-
-        startActivity(intent);
-    }
-
-    @Override
-    public void openUserProfileActivity() {
-        Intent intent = new Intent(this, UserProfileInfoActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onMessageChanged(String message) {
-        if (message != null && !message.isEmpty()) {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
     }
 }

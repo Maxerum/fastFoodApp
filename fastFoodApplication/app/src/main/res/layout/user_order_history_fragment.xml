@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
+        
         <variable
             name="viewModel"
             type="com.example.fastfoodapp.userprofile.orderhistory.UserOrderHistoryViewModel" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:layout_height="match_parent">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            app:onRefresh="@{viewModel}"
             app:refreshing="@{viewModel.mDataLoading}"
-            app:onRefresh="@{viewModel}">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/orders_recycler_view"
+                app:items="@{viewModel.mOrders}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
-                android:paddingBottom="50dp"
-                app:items="@{viewModel.mOrders}"/>
+                android:paddingBottom="50dp" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.button.MaterialButton
             app:cornerRadius="@dimen/button_rounded_corners_radius"
-            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="@dimen/welcome_screen_button_height"
+            android:layout_alignParentBottom="true"
             android:layout_marginStart="@dimen/welcome_screen_side_margin"
             android:layout_marginEnd="@dimen/welcome_screen_side_margin"
             android:backgroundTint="@color/fastfoodapp_red"
-            android:text="@string/clear_order_history_action"
-            android:onClick="@{() -> viewModel.clearUserOrderHistory()}"/>
+            android:onClick="@{() -> viewModel.clearUserOrderHistory()}"
+            android:text="@string/clear_order_history_action" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/empty_order_history_message"
+            android:textAppearance="@style/FastFoodApp.TextAppearance.Huge.Bold"
+            android:visibility="@{viewModel.empty ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
 
 </layout>

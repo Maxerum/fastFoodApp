@@ -98,11 +98,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="FastFoodApp.TextAppearance.Huge.Dark">
+    <style name="FastFoodApp.TextAppearance.Huge.Black">
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="FastFoodApp.TextAppearance.Huge.Dark.Bold">
+    <style name="FastFoodApp.TextAppearance.Huge.Black.Bold">
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -165,7 +165,7 @@
         <item name="android:textColor">@color/red</item>
     </style>
 
-    <style name="TextInputEditText" parent="FastFoodApp.TextAppearance.Huge.Dark">
+    <style name="TextInputEditText" parent="FastFoodApp.TextAppearance.Huge.Black">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

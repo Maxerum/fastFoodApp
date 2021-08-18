@@ -2,6 +2,7 @@ package com.example.fastfoodapp.orderdetails;
 
 import android.content.Context;
 
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 
@@ -203,7 +204,6 @@ public class OrderDetailsViewModel implements PaymentSheetController.PaymentShee
             placeOrder(order, user.getUid());
 
         } else if (result instanceof PaymentSheetResult.Failed) {
-
             mToastText.set("Payment failed");
         }
     }
